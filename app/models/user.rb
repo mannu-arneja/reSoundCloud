@@ -19,7 +19,7 @@ require 'bcrypt'
 class User < ApplicationRecord
 
     validates :username, :email, :password_digest, :session_token, presence: true
-    validates :username, :email, uniqueness: true
+    validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 
     validates :password, length: {minimum: 6}, allow_nil: true
     ## custom validate age
 
@@ -32,7 +32,7 @@ class User < ApplicationRecord
     end
 
     def is_password?(password)
-        BCrypt::Password.new(self.password_digest).is_password(password)
+        BCrypt::Password.new(self.password_digest).is_password?(password)
     end
 
     def password=(password)

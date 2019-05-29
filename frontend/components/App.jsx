@@ -5,6 +5,7 @@ const App = () => (
     <div>
         <header>
         <h1>reSoundCloud</h1>
+        <GreetingContainer />
         </header>
     </div>
 );

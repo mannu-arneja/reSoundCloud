@@ -4,13 +4,23 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 // regular action creators
-const receiveCurrentUser = (user) => ({
-    type: RECEIVE_CURRENT_USER,
-    user
-});
+export const receiveCurrentUser = (user) => {
+    // debugger;
+    return (
+    {type: RECEIVE_CURRENT_USER,
+    user: user}
+    )
+};
 
-const logoutCurrentUser = () => ({
-    type: LOGOUT_CURRENT_USER
+// export const logoutCurrentUser = () => {
+//     debugger;
+//     return (
+//     {type: LOGOUT_CURRENT_USER}
+//     )
+// };
+
+export const logoutCurrentUser = () => ({
+    type: LOGOUT_CURRENT_USER,
 });
 
 export const receiveErrors = (errors) => ({
@@ -19,19 +29,31 @@ export const receiveErrors = (errors) => ({
 });
 
 // thunk action creators
-export const login = (user) => {
-    return (dispatch => {
-        APIUtil.login(user)
-        .then(payload => dispatch(receiveCurrentUser(payload)));
-    });
-};
+// export const login = user => dispatch => (
+//         APIUtil.login(user).then(payload => dispatch(receiveCurrentUser(payload)));
+//     );
+// };
 
-export const logout = () => {
-    return (dispatch) => {
-        APIUtil.logout()
-        .then(() => dispatch(logoutCurrentUser()));
-    };
-};
+export const login = user => dispatch => { 
+    // debugger;
+    return APIUtil.login(user).then(user => 
+            { return dispatch(receiveCurrentUser(user))}
+        )
+}
+
+// export const logout = () => {
+//     debugger
+//     return (dispatch) => {
+//         return APIUtil.logout()
+//         .then(() => dispatch(logoutCurrentUser()));
+//     };
+// };
+
+export const logout = () => dispatch => {
+    debugger;
+    return APIUtil.logout().then(() => dispatch(logoutCurrentUser())
+    )
+}
 
 export const signup = (user) => {
     return (dispatch) => {
