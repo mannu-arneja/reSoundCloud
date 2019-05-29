@@ -50,7 +50,7 @@ export const login = user => dispatch => {
 // };
 
 export const logout = () => dispatch => {
-    debugger;
+    //debugger;
     return APIUtil.logout().then(() => dispatch(logoutCurrentUser())
     )
 }
