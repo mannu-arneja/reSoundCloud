@@ -17,33 +17,61 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.processForm(this.state)
+        this.props.processForm(this.state).then(this.render())
+    }
+
+    fullForm() {
+
+        return (
+            < form onSubmit = { this.handleSubmit } className = "login-form" >
+            { this.props.formType }
+            < label > email:
+        <input type="text"
+            value={this.state.email}
+            onChange={this.handleUpdate('email')}
+            className="login-field"
+        />
+                </label >
+            <label>password:
+                    <input type="password"
+                    value={this.state.password}
+                    onChange={this.handleUpdate('password')}
+                    className="login-field"
+                />
+            </label>
+            <input type="submit" value={this.props.formType} className="submit-button" />
+            </form >
+        )
+    }
+
+    preForm() {
+        return(
+            < form onSubmit={this.handleSubmit} className="login-form" >
+                < label > email:
+                <input type="text"
+                        value={this.state.email}
+                        onChange={this.handleUpdate('email')}
+                        className="login-field"
+                    />
+                </label >
+                <input type="submit" value={this.props.formType} className="submit-button" />
+            </form >
+        )
     }
 
 
     render() {
-
-        return(
-            <form onSubmit={this.handleSubmit} className="login-form">
-                {this.props.formType}
-                <label>email: 
-                    <input type="text"
-                           value={this.state.email}
-                           onChange={this.handleUpdate('email')}
-                           className="login-field"
-                    />
-                </label>
-                <label>password: 
-                    <input type="password"
-                           value={this.state.password}
-                           onChange={this.handleUpdate('password')}
-                           className="login-field"
-                    />
-                </label>
-                <input type="submit" value={this.props.formType} className="submit-button"/>
-            </form>
-        )
-
+        // debugger
+        // if (this.state.email) {
+        //     {return this.fullForm()}
+        // } else {
+        //     {return this.preForm()}
+        // }
+        if (this.props.formType === 'signup'){
+            return (this.preForm());
+        } else {
+            return (this.fullForm());
+        }
     }
 
 };
