@@ -2146,3 +2146,157 @@ Processing by Api::UsersController#create as JSON
 Completed 422 Unprocessable Entity in 81ms (Views: 0.2ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/" for ::1 at 2019-05-30 10:08:46 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 457ms (Views: 454.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/users" for ::1 at 2019-05-30 10:09:01 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"panda.bear@anco.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "panda.bear@anco.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 95ms (Views: 0.2ms | ActiveRecord: 7.6ms)
+
+
+Started POST "/api/users" for ::1 at 2019-05-30 10:09:09 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"panda.bear@anco.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "panda.bear@anco.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 71ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2019-05-30 10:10:38 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 35ms (Views: 32.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-05-30 10:10:58 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 46ms (Views: 43.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/users" for ::1 at 2019-05-30 10:11:13 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"panda.bear@anco.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "panda.bear@anco.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 97ms (Views: 0.3ms | ActiveRecord: 7.8ms)
+
+
+Started POST "/api/session" for ::1 at 2019-05-30 10:11:42 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"panda.bear@anco.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "panda.bear@anco.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "panda.bear@anco.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "x-sRYh_dgS1fcO9_6CWhnQ"], ["updated_at", "2019-05-30 14:11:42.158787"], ["id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.2ms)
+Completed 200 OK in 85ms (Views: 6.8ms | ActiveRecord: 2.6ms)
+
+
+Started DELETE "/api/session" for ::1 at 2019-05-30 10:11:52 -0400
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "x-sRYh_dgS1fcO9_6CWhnQ"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "panda.bear@anco.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "mj4hUEEULeU0cS99OYeyfw"], ["updated_at", "2019-05-30 14:11:52.543345"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/" for ::1 at 2019-05-30 10:43:53 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 553ms (Views: 551.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-05-30 10:45:14 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 493ms (Views: 490.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/check" for ::1 at 2019-05-30 10:45:40 -0400
+
+NameError - uninitialized constant SessionController:
+
+Started GET "/" for ::1 at 2019-05-30 10:47:30 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 590ms (Views: 586.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/check?user%5Bemail%5D=panda.bear%40anco.com&user%5Bpassword%5D=[FILTERED]" for ::1 at 2019-05-30 10:47:47 -0400
+
+NameError - uninitialized constant SessionController:
+
+Started GET "/" for ::1 at 2019-05-30 10:51:15 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 547ms (Views: 545.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/session/check?user%5Bemail%5D=panda.bear%40anco.com&user%5Bpassword%5D=[FILTERED]" for ::1 at 2019-05-30 10:51:22 -0400
+
+SyntaxError - syntax error, unexpected end-of-input, expecting keyword_end:
+  app/controllers/api/sessions_controller.rb:38:in `'
+
+Started GET "/" for ::1 at 2019-05-30 10:52:10 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/session/check?user%5Bemail%5D=panda.bear%40anco.com&user%5Bpassword%5D=[FILTERED]" for ::1 at 2019-05-30 10:52:17 -0400
+Processing by Api::SessionsController#check_email as */*
+  Parameters: {"user"=>{"email"=>"panda.bear@anco.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE (panda.bear@anco.com) LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE (panda.bear@anco.com) LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "panda.bear@anco.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE (panda.bear@anco.com) LIMIT $1[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 145591ms (ActiveRecord: 16.9ms)
+
+
+
+PG::UndefinedTable - ERROR:  missing FROM-clause entry for table "panda"
+LINE 1: SELECT  "users".* FROM "users" WHERE (panda.bear@anco.com) L...
+                                              ^
+:
+  app/controllers/api/sessions_controller.rb:5:in `check_email'
+
+Started GET "/" for ::1 at 2019-05-30 10:54:49 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 38ms (Views: 34.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/session/check?user%5Bemail%5D=panda.bear%40anco.com&user%5Bpassword%5D=[FILTERED]" for ::1 at 2019-05-30 10:55:12 -0400
+Processing by Api::SessionsController#check_email as */*
+  Parameters: {"user"=>{"email"=>"panda.bear@anco.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "panda.bear@anco.com"], ["LIMIT", 1]]
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (1.2ms)
+  Rendered api/users/show.json.jbuilder (9.5ms)
+Completed 200 OK in 7543ms (Views: 39.5ms | ActiveRecord: 6.9ms)
+
+

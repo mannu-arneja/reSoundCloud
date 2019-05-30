@@ -22,3 +22,11 @@ export const logout = () => {
         url: 'api/session'
     });
 };
+
+export const check_email = (user) => {
+    return $.ajax ({
+        method: 'GET',
+        url: '/api/session/check',
+        data: {user}
+    })
+};

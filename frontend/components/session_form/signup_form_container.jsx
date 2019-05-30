@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
-import { signup } from '../../actions/session_actions'
+import { signup, check_email } from '../../actions/session_actions'
 
 const msp = (state, ownProps) => {
     return {
@@ -14,7 +14,7 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
     return {
-        processForm: (user) => dispatch(signup(user)),
+        processForm: (user) => dispatch(check_email(user)),
     };
 };
 
