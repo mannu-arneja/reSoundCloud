@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Greeting({currentUser, logout}){
+function Greeting({currentUser, logout, openModal}){
 
 
     if (currentUser) {
@@ -14,8 +14,8 @@ function Greeting({currentUser, logout}){
     } else {
         return (
             <nav className="signin">
-                <Link to="/signup">Sign Up </Link> 
-                <Link to="/login">Sign In</Link>
+                <button onClick={()=>openModal('login')}>Login</button>
+                <button onClick={()=>openModal('signup')}>Sign up</button>
             </nav>
         )
     }
