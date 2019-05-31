@@ -24,8 +24,7 @@ class SessionForm extends React.Component {
 
         return (
             < form onSubmit = { this.handleSubmit } className = "login-form" >
-                { this.props.formType }
-                <label> email:
+                <label>email:
                 <input type="text"
                     value={this.state.email}
                     onChange={this.handleUpdate('email')}
@@ -39,8 +38,9 @@ class SessionForm extends React.Component {
                     onChange={this.handleUpdate('password')}
                     className="login-field"
                 />
-            </label>
-            <input type="submit" value={this.props.formType} className="submit-button" />
+                </label>
+                <br/>
+                <input type="submit" value="Continue" className="submit-button" />
             </form >
         )
     }
@@ -48,14 +48,15 @@ class SessionForm extends React.Component {
     preForm() {
         return(
             < form onSubmit={this.handleSubmit} className="login-form" >
-                < label > email:
+                <label>email:
                 <input type="text"
                         value={this.state.email}
                         onChange={this.handleUpdate('email')}
                         className="login-field"
                     />
-                </label >
-                <input type="submit" value={this.props.formType} className="submit-button" />
+                </label>
+                <br/>
+                <input type="submit" value="Continue" className="submit-button" />
             </form >
         )
     }
