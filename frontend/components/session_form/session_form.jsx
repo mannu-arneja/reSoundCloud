@@ -64,15 +64,20 @@ class SessionForm extends React.Component {
 
     render() {
         // debugger
-        // if (this.state.email) {
-        //     {return this.fullForm()}
+        // if (this.props.formType === 'signup'){
+        //     return (this.preForm());
         // } else {
-        //     {return this.preForm()}
+        //     return (this.fullForm());
         // }
-        if (this.props.formType === 'signup'){
-            return (this.preForm());
-        } else {
-            return (this.fullForm());
+
+        switch (this.props.formType) {
+            case 'email':
+                return (this.preForm());
+            case 'login':
+                debugger
+                return (this.fullForm());
+            default:
+                return null;
         }
     }
 

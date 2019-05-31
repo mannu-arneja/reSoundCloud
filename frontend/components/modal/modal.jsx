@@ -3,13 +3,18 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
+import EmailFormContainer from '../session_form/email_form_container';
 
 function Modal({ modal, closeModal }) {
     if (!modal) {
         return null;
     }
+
     let component;
     switch (modal) {
+        case 'email':
+            component = <EmailFormContainer />;
+            break;
         case 'login':
             component = <LoginFormContainer />;
             break;
@@ -17,8 +22,8 @@ function Modal({ modal, closeModal }) {
             component = <SignupFormContainer />;
             break;
         default:
-            return null;
-    }
+            component = null;
+    };
     return (
         <div className="modal-background" onClick={closeModal}>
             <div className="modal-child" onClick={e => e.stopPropagation()}>

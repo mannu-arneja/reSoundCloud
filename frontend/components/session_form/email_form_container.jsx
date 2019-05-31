@@ -5,17 +5,17 @@ import SessionForm from './session_form';
 import { signup, check_email } from '../../actions/session_actions'
 
 const msp = (state, ownProps) => {
+
     return {
         errors: state.errors.session,
-        email: state.session.email,
-        formType: 'signup',
+        formType: 'email',
         // navLink: <Link to="/login">create account</Link>,
     };
-};  
+};
 
 const mdp = dispatch => {
     return {
-        processForm: (user) => dispatch(signup(user)),
+        processForm: (user) => dispatch(check_email(user)),
     };
 };
 
