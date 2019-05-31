@@ -8,9 +8,10 @@ import Modal from './modal/modal';
 const App = () => (
     <div>
         <Modal />
-        <header>
-        <h1>reSoundCloud</h1>
-        <GreetingContainer />
+        <header className='header-container'>
+            <i className="fab fa-soundcloud fa-3x"></i>
+            <h1>reSoundCloud</h1>
+            <GreetingContainer />
         </header>
 
 
