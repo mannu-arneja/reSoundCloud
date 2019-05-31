@@ -9,8 +9,10 @@ const App = () => (
     <div>
         <Modal />
         <header className='header-container'>
-            <i className="fab fa-soundcloud fa-3x"></i>
-            <h1>reSoundCloud</h1>
+            <div className="logo">
+                <i className="fab fa-soundcloud fa-3x"></i>
+                <h1> reSoundCloud</h1>
+            </div>
             <GreetingContainer />
         </header>
 

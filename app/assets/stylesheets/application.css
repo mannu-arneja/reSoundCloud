@@ -14,15 +14,34 @@
  *= require_self
  */
 
- body {
-    background: #f2f2f2
- }
+@import './reset.css';
 
- .header-container {
-   
- }
+body {
+  background: #f2f2f2
+}
 
- .modal-background {
+.header-container {
+  background-color: black;
+  width: 88%;
+  height: 400px;
+  margin: 0 auto;
+  color: white;
+  display:flex;
+  justify-content: space-around;
+}
+
+.logo {
+  display:flex;
+  height: 50px;
+  align-items: flex-end;
+}
+
+.logo h1{
+  margin-bottom: 9px;
+  margin-left: 3px;
+}
+
+.modal-background {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -37,6 +56,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: white;
+  height: 40%;
+  width: 40%;
 }
 
 /* greeting */
@@ -44,8 +66,8 @@
 
 }
 
-nav .signin {
-    
+nav.signin {
+  margin-top: 20px;
 }
 
 /* session_form */
