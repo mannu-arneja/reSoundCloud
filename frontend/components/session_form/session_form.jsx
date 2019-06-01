@@ -9,6 +9,8 @@ class SessionForm extends React.Component {
         };
         
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleContinue = this.handleContinue.bind(this);
+        this.continue = this.continue.bind(this);
     }
 
     handleUpdate(field) {
@@ -16,8 +18,24 @@ class SessionForm extends React.Component {
     };
 
     handleSubmit(e) {
+        debugger
         e.preventDefault();
-        this.props.processForm(this.state).then(this.render())
+        this.props.processForm(this.state).then(this.continue())
+    }
+
+    handleContinue(e) {
+        e.preventDefault();
+        this.props.processForm(this.state)
+    }
+
+    continue(){
+        debugger
+        this.props.closeModal();
+        this.props.openModal('login');
+    }
+
+    componentDidUpdate(){
+        debugger
     }
 
     fullForm() {
@@ -75,6 +93,8 @@ class SessionForm extends React.Component {
                 return (this.preForm());
             case 'login':
                 debugger
+                return (this.fullForm());
+            case 'signup':
                 return (this.fullForm());
             default:
                 return null;
