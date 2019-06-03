@@ -83,6 +83,12 @@ body {
 
 
 /* session_form */
+
+.errorText {
+  color: red;
+  font-size: medium;
+}
+
 .login-form > *{
   font-size: 12px;
   border-radius: 4px;

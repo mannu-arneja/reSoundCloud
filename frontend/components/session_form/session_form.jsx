@@ -10,7 +10,8 @@ class SessionForm extends React.Component {
         };
         
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleContinue = this.handleContinue.bind(this);
+        this.showErrors = this.showErrors.bind(this);
+        // this.handleContinue = this.handleContinue.bind(this);
         // this.continue = this.continue.bind(this);
     }
 
@@ -21,14 +22,14 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         debugger
         e.preventDefault();
-        this.props.processForm(this.state)
+        this.props.processForm(this.state).then(this.render())
         // .then(() => this.props.closeModal())
     }
 
-    handleContinue(e) {
-        e.preventDefault();
-        this.props.processForm(this.state)
-    }
+    // handleContinue(e) {
+    //     e.preventDefault();
+    //     this.props.processForm(this.state).then
+    // }
 
     // continue(){
     //     this.props.closeModal();
@@ -36,8 +37,24 @@ class SessionForm extends React.Component {
     // }
 
     showErrors() {
-        debugger
-    }
+
+        // let errorText;
+        // if (this.props.errors.errors) {
+        //     debugger;
+        //     this.props.errors.errors.forEach(err => {
+        //         errorText = <p>{err}</p>;
+        //     });
+        // }
+        // return errorText;
+
+        return (
+            <div>
+                {this.props.errors.map((err) => (
+                    <p className="errorText">{err}</p>
+                ))}
+            </div>
+        );
+    };
 
 
     loginForm() {
@@ -62,8 +79,8 @@ class SessionForm extends React.Component {
                 />
                 </label>
                 <br/>
-                <input type="submit" value="Continue" className="signup-button" />
                 {this.showErrors()}
+                <input type="submit" value="Continue" className="signup-button" />
             </form >
         )
     }
@@ -100,26 +117,25 @@ class SessionForm extends React.Component {
                 </label>
                 <br/>
                 <input type="submit" value="Continue" className="signup-button" />
-                {this.showErrors()}
             </form >
         )
     }
 
-    preForm() {
-        return(
-            < form onSubmit={this.handleSubmit} className="login-form" >
-                <label>email:
-                <input type="text"
-                        value={this.state.email}
-                        onChange={this.handleUpdate('email')}
-                        className="login-field"
-                    />
-                </label>
-                <br/>
-                <input type="submit" value="Continue" className="submit-button" />
-            </form >
-        )
-    }
+    // preForm() {
+    //     return(
+    //         < form onSubmit={this.handleSubmit} className="login-form" >
+    //             <label>email:
+    //             <input type="text"
+    //                     value={this.state.email}
+    //                     onChange={this.handleUpdate('email')}
+    //                     className="login-field"
+    //                 />
+    //             </label>
+    //             <br/>
+    //             <input type="submit" value="Continue" className="submit-button" />
+    //         </form >
+    //     )
+    // }
 
 
     render() {
@@ -129,6 +145,7 @@ class SessionForm extends React.Component {
         // } else {
         //     return (this.fullForm());
         // }
+
 
         switch (this.props.formType) {
             case 'email':
