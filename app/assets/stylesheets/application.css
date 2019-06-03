@@ -22,23 +22,28 @@ body {
 
 .header-container {
   background-color: black;
+  background-image: url('../images/frontHero.jpg');
   width: 88%;
   height: 400px;
   margin: 0 auto;
   color: white;
   display:flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .logo {
   display:flex;
   height: 50px;
   align-items: flex-end;
+  padding: 15px;
+  user-select: none;
 }
 
 .logo h1{
   margin-bottom: 9px;
-  margin-left: 3px;
+  margin-left: 6px;
+  font-weight: bold;
+  font-size: larger;
 }
 
 .modal-background {
@@ -47,7 +52,7 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(240, 240, 240, 0.9);
   z-index: 10;
 }
 
@@ -60,8 +65,16 @@ body {
   height: 40%;
   width: 40%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.fa-times {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: x-large;
 }
 
 /* greeting */
@@ -71,15 +84,66 @@ body {
 
 nav.signin {
   margin-top: 20px;
+  padding: 15px;
 }
 
-/* session_form */
-.login-form{
+.login-button {
+background: transparent;
+color: white;
+padding: 3px;
+padding-left:10px;
+padding-right:10px;
+font-size: 14px;
+border-radius: 4px;
+border-color: rgba(255, 255, 255, 0.865);
+cursor: pointer;
+}
 
+.login-button:hover {
+  border-color: white
+}
+
+.signup-button {
+  color: white;
+  background-color: #f50;
+  border-color: #f50;
+  border-radius: 4px;
+  padding: 3px;
+  padding-left:10px;
+  padding-right:10px;
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+
+
+/* session_form */
+.login-form > *{
+  font-size: 12px;
+  border-radius: 4px;
+  margin: 5px;
+  width: 85%;
+}
+.signup-form > *{
+  font-size: 12px;
+  border-radius: 4px;
+  margin: 5px;
+  width: 85%;
+}
+
+.login-form{
+  height: 75%;
+  width: 85%;
+}
+
+.signup-form{
+  height: 75%;
+  width: 85%;
 }
 
 .login-field {
-
+  width: 85%;
 }
 
 .submit-button {

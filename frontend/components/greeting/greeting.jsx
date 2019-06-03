@@ -14,8 +14,8 @@ function Greeting({currentUser, logout, openModal}){
     } else {
         return (
             <nav className="signin">
-                <button onClick={()=>openModal('login')}>Login</button>
-                <button onClick={()=>openModal('signup')}>Sign up</button>
+                <button className="login-button" onClick={()=>openModal('login')}>Sign in</button>
+                <button className="signup-button" onClick={()=>openModal('signup')}>Create account</button>
             </nav>
         )
     }

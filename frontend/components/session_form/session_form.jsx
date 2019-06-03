@@ -11,7 +11,7 @@ class SessionForm extends React.Component {
         
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleContinue = this.handleContinue.bind(this);
-        this.continue = this.continue.bind(this);
+        // this.continue = this.continue.bind(this);
     }
 
     handleUpdate(field) {
@@ -19,8 +19,10 @@ class SessionForm extends React.Component {
     };
 
     handleSubmit(e) {
+        debugger
         e.preventDefault();
-        this.props.processForm(this.state).then(this.props.closeModal())
+        this.props.processForm(this.state)
+        // .then(() => this.props.closeModal())
     }
 
     handleContinue(e) {
@@ -28,9 +30,13 @@ class SessionForm extends React.Component {
         this.props.processForm(this.state)
     }
 
-    continue(){
-        this.props.closeModal();
-        this.props.openModal('login');
+    // continue(){
+    //     this.props.closeModal();
+    //     this.props.openModal('login');
+    // }
+
+    showErrors() {
+        debugger
     }
 
 
@@ -57,6 +63,7 @@ class SessionForm extends React.Component {
                 </label>
                 <br/>
                 <input type="submit" value="Continue" className="submit-button" />
+                {this.showErrors()}
             </form >
         )
     }
@@ -73,6 +80,7 @@ class SessionForm extends React.Component {
                     placeholder="Your Display Name"
                 />
                 </label >
+                <br/>
                 <label>
                 <input type="text"
                     value={this.state.email}
@@ -92,6 +100,7 @@ class SessionForm extends React.Component {
                 </label>
                 <br/>
                 <input type="submit" value="Continue" className="submit-button" />
+                {this.showErrors()}
             </form >
         )
     }

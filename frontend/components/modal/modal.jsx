@@ -31,7 +31,7 @@ function Modal({ modal, closeModal, login }) {
             <div className="modal-child" onClick={e => e.stopPropagation()}>
                 {component}
                 <button className="demo-button" onClick={() => login({email:"demo@nyc.edu", password:"hunter2"})
-                        .then({closeModal})}>
+                        }>
                     Login as Guest
                 </button>
             </div>
