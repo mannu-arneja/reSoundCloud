@@ -77,7 +77,7 @@ class SessionForm extends React.Component {
                     value={this.state.username}
                     onChange={this.handleUpdate('username')}
                     className="login-field"
-                    placeholder="Your Display Name"
+                    placeholder="Your display name *"
                 />
                 </label >
                 <br/>
@@ -86,7 +86,7 @@ class SessionForm extends React.Component {
                     value={this.state.email}
                     onChange={this.handleUpdate('email')}
                     className="login-field"
-                    placeholder="Your Email Address"
+                    placeholder="Your email address *"
                 />
                 </label >
                 <br/>
@@ -95,11 +95,11 @@ class SessionForm extends React.Component {
                     value={this.state.password}
                     onChange={this.handleUpdate('password')}
                     className="login-field"
-                    placeholder="Your Password"
+                    placeholder="Your password"
                 />
                 </label>
                 <br/>
-                <input type="submit" value="Continue" className="submit-button" />
+                <input type="submit" value="Continue" className="signup-button" />
                 {this.showErrors()}
             </form >
         )

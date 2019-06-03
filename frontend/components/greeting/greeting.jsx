@@ -8,7 +8,7 @@ function Greeting({currentUser, logout, openModal}){
         return (
             <div className="greet">
                 <h1>{currentUser.username}!</h1>       
-                <button onClick={logout}>Log Out</button>
+                <button className="login-button" onClick={logout}>Log Out</button>
             </div>
         )
     } else {

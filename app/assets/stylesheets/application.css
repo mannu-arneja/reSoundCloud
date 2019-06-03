@@ -105,13 +105,17 @@ body {
   justify-content: center;
 }
 
-.login-form input::placeholder {
+input::placeholder {
   color: rgba(0, 0, 0, 0.4);
 }
 
 .signup-form{
-  height: 75%;
-  width: 85%;
+  height: 85%;
+  width: 100%;
+  display:flex;
+  flex-direction: inherit;
+  align-items: center;
+  justify-content: center;
 }
 
 .login-field {
@@ -131,7 +135,13 @@ body {
 
 /* greeting */
 .greet{
-
+  margin-top: 20px;
+  padding: 15px;
+  display: flex;
+  align-items: baseline;
+}
+.greet h1{
+  margin-right: 10px;
 }
 
 nav.signin {
@@ -143,7 +153,7 @@ nav.signin {
 background: transparent;
 color: white;
 padding: 5px 15px;
-font-size: 14px;
+font-size: 15px;
 border-radius: 4px;
 border-color: rgba(255, 255, 255, 0.865);
 cursor: pointer;
@@ -159,7 +169,7 @@ cursor: pointer;
   border-color: #f50;
   border-radius: 4px;
   padding: 5px 15px;
-  font-size: 14px;
+  font-size: 15px;
   margin-left: 10px;
   cursor: pointer;
 }
