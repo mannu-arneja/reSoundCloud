@@ -136,9 +136,6 @@ input::placeholder {
   border-color: lightgrey;
 }
 
-.submit-button {
-
-}
 
 /* greeting */
 .greet{
@@ -190,4 +187,28 @@ cursor: pointer;
   font-size: 15px;
   margin-left: 10px;
   cursor: pointer;
+}
+
+.frontHero-content{
+  font-size:36px;
+  position: relative;
+  color: white;
+  padding-top: 145px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: interstate, sans-serif;
+  
+}
+
+.frontHero-content p{
+  font-size: 18px;
+  text-align: center;
+  width: 500px;
+}
+
+.frontHero-content h2{
+  margin-bottom: 8px;
+  font-size: 36px;
+  font-weight: 100;
 }

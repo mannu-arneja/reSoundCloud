@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import Modal from './modal/modal';
+import FrontContent from './front-content';
 
 const App = () => (
     <div className="body-container">
@@ -15,8 +16,7 @@ const App = () => (
             </div>
             <GreetingContainer />
         </header>
-
-
+            <FrontContent />
     </div>
 );
 
