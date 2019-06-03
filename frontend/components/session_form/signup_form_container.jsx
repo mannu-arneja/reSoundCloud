@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
 import { signup, check_email } from '../../actions/session_actions'
+import { closeModal, openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
     return {
@@ -16,6 +17,7 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
     return {
         processForm: (user) => dispatch(signup(user)),
+        closeModal: () => dispatch(closeModal()),
     };
 };
 

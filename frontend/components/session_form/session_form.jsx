@@ -6,6 +6,7 @@ class SessionForm extends React.Component {
         this.state = {
             email: '',
             password: '',
+            username: '',
         };
         
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,9 +19,8 @@ class SessionForm extends React.Component {
     };
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
-        this.props.processForm(this.state).then(this.continue())
+        this.props.processForm(this.state).then(this.props.closeModal())
     }
 
     handleContinue(e) {
@@ -29,32 +29,65 @@ class SessionForm extends React.Component {
     }
 
     continue(){
-        debugger
         this.props.closeModal();
         this.props.openModal('login');
     }
 
-    componentDidUpdate(){
-        debugger
-    }
 
-    fullForm() {
+    loginForm() {
 
         return (
             < form onSubmit = { this.handleSubmit } className = "login-form" >
-                <label>email:
+                <label>
                 <input type="text"
                     value={this.state.email}
                     onChange={this.handleUpdate('email')}
                     className="login-field"
+                    placeholder="Your Email Address"
                 />
                 </label >
                 <br/>
-                <label>password:
+                <label>
                     <input type="password"
                     value={this.state.password}
                     onChange={this.handleUpdate('password')}
                     className="login-field"
+                    placeholder="Your Password"
+                />
+                </label>
+                <br/>
+                <input type="submit" value="Continue" className="submit-button" />
+            </form >
+        )
+    }
+
+    signupForm() {
+
+        return (
+            < form onSubmit = { this.handleSubmit } className = "signup-form" >
+                <label>
+                <input type="text"
+                    value={this.state.username}
+                    onChange={this.handleUpdate('username')}
+                    className="login-field"
+                    placeholder="Your Display Name"
+                />
+                </label >
+                <label>
+                <input type="text"
+                    value={this.state.email}
+                    onChange={this.handleUpdate('email')}
+                    className="login-field"
+                    placeholder="Your Email Address"
+                />
+                </label >
+                <br/>
+                <label>
+                    <input type="password"
+                    value={this.state.password}
+                    onChange={this.handleUpdate('password')}
+                    className="login-field"
+                    placeholder="Your Password"
                 />
                 </label>
                 <br/>
@@ -92,10 +125,9 @@ class SessionForm extends React.Component {
             case 'email':
                 return (this.preForm());
             case 'login':
-                debugger
-                return (this.fullForm());
+                return (this.loginForm());
             case 'signup':
-                return (this.fullForm());
+                return (this.signupForm());
             default:
                 return null;
         }
