@@ -1,4 +1,5 @@
 import React from 'react';
+import { closeModal, openModal } from '../../actions/modal_actions';
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -22,9 +23,16 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         debugger
         e.preventDefault();
-        this.props.processForm(this.state).then(this.render())
-        // .then(() => this.props.closeModal())
-    }
+        this.props.processForm(this.state)
+    };
+    // handleSubmit(e) {
+    //     debugger
+    //     e.preventDefault();
+    //     this.props.processForm(this.state).then(
+    //         (closeModal()),
+    //         (() => openModal(this.props.formType))
+    //     );
+    // };
 
     // handleContinue(e) {
     //     e.preventDefault();
@@ -49,8 +57,8 @@ class SessionForm extends React.Component {
 
         return (
             <div>
-                {this.props.errors.map((err) => (
-                    <p className="errorText">{err}</p>
+                {this.props.errors.map((err, i) => (
+                    <p key={`error-${i}`} className="errorText">{err}</p>
                 ))}
             </div>
         );

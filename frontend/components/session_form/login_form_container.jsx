@@ -16,7 +16,8 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
     return {
         processForm: (user) => dispatch(login(user)),
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
+        openModal: (mode) => dispatch(openModal(mode)),
     };
 };
 
