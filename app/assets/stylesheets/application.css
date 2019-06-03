@@ -17,13 +17,17 @@
 @import './reset.css';
 
 body {
-  background: #f2f2f2
+  background: #f2f2f2;
+  max-width: 960px;
+  min-width: 500px;
+  margin: 0 auto;
 }
+
 
 .header-container {
   background-color: black;
-  background-image: url('../images/frontHero.jpg');
-  width: 88%;
+  background-image: url("./frontHero.jpg");
+  width: 100%;
   height: 400px;
   margin: 0 auto;
   color: white;
@@ -62,8 +66,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  height: 40%;
-  width: 40%;
+  height: 620px;
+  width: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,46 +80,6 @@ body {
   top: 10px;
   font-size: x-large;
 }
-
-/* greeting */
-.greet{
-
-}
-
-nav.signin {
-  margin-top: 20px;
-  padding: 15px;
-}
-
-.login-button {
-background: transparent;
-color: white;
-padding: 3px;
-padding-left:10px;
-padding-right:10px;
-font-size: 14px;
-border-radius: 4px;
-border-color: rgba(255, 255, 255, 0.865);
-cursor: pointer;
-}
-
-.login-button:hover {
-  border-color: white
-}
-
-.signup-button {
-  color: white;
-  background-color: #f50;
-  border-color: #f50;
-  border-radius: 4px;
-  padding: 3px;
-  padding-left:10px;
-  padding-right:10px;
-  font-size: 14px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
 
 
 /* session_form */
@@ -133,8 +97,16 @@ cursor: pointer;
 }
 
 .login-form{
-  height: 75%;
-  width: 85%;
+  height: 85%;
+  width: 100%;
+  display:flex;
+  flex-direction: inherit;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .signup-form{
@@ -143,9 +115,51 @@ cursor: pointer;
 }
 
 .login-field {
-  width: 85%;
+  width: 100%;
+  font-size: 17px;
+  font-weight: 300;
+  padding: 5px;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgrey;
 }
 
 .submit-button {
 
+}
+
+/* greeting */
+.greet{
+
+}
+
+nav.signin {
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.login-button {
+background: transparent;
+color: white;
+padding: 5px 15px;
+font-size: 14px;
+border-radius: 4px;
+border-color: rgba(255, 255, 255, 0.865);
+cursor: pointer;
+}
+
+.login-button:hover {
+  border-color: white
+}
+
+.signup-button {
+  color: white;
+  background-color: #f50;
+  border-color: #f50;
+  border-radius: 4px;
+  padding: 5px 15px;
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
 }

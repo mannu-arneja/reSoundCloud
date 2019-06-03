@@ -6,7 +6,7 @@ import SignupFormContainer from './session_form/signup_form_container';
 import Modal from './modal/modal';
 
 const App = () => (
-    <div>
+    <div className="body-container">
         <Modal />
         <header className='header-container'>
             <div className="logo">
