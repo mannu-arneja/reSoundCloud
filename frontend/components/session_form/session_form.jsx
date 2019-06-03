@@ -54,7 +54,7 @@ class SessionForm extends React.Component {
         //     });
         // }
         // return errorText;
-
+        debugger
         return (
             <div>
                 {this.props.errors.map((err, i) => (
@@ -124,6 +124,7 @@ class SessionForm extends React.Component {
                 />
                 </label>
                 <br/>
+                {this.showErrors()}
                 <input type="submit" value="Continue" className="signup-button" />
             </form >
         )

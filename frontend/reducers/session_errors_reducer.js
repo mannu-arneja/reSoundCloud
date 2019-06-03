@@ -7,7 +7,7 @@ Object.freeze(oldState);
         case RECEIVE_ERRORS:
             return action.errors;
         case RECEIVE_CURRENT_USER:
-            return ({}, oldState, {errors: null});
+            return [];
         default:
             return oldState;
     }

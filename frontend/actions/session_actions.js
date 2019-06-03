@@ -6,7 +6,7 @@ export const RECEIVE_CURRENT_EMAIL = 'RECEIVE_CURRENT_EMAIL';
 
 // regular action creators
 export const receiveCurrentUser = (user) => {
-    debugger;
+    // debugger;
     return (
     {type: RECEIVE_CURRENT_USER,
     user: user}
@@ -41,9 +41,11 @@ export const login = user => dispatch => {
 
 export const logout = () => dispatch => {
     //debugger;
-    return APIUtil.logout().then(() => dispatch(logoutCurrentUser())
-    )
-}
+    return (
+        APIUtil.logout().then(() => dispatch(logoutCurrentUser()),
+        err => dispatch(receiveErrors(err.responseJSON)))
+    );
+};
 
 // export const signup = (user) => {
 //     return (dispatch) => {
@@ -52,16 +54,19 @@ export const logout = () => dispatch => {
 //     };
 // };
 export const signup = user => dispatch => {
-    debugger
-    return APIUtil.signup(user).then(user => 
-        { debugger; return dispatch(receiveCurrentUser(user)) }
-    )
-}
+    // debugger
+    return (
+        APIUtil.signup(user).then(user => dispatch(receiveCurrentUser(user)),
+        err => dispatch(receiveErrors(err.responseJSON)))
+    );
+};
 
 export const check_email = (user) => dispatch => {
-    return APIUtil.check_email(user)
+    return (APIUtil.check_email(user)
         .then(payload => dispatch({
             type: RECEIVE_CURRENT_EMAIL,
             user: payload
-        }))
+        }),
+        err => dispatch(receiveErrors(err.responseJSON)))
+    );
 };

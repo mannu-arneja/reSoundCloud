@@ -11,7 +11,7 @@ const App = () => (
         <header className='header-container'>
             <div className="logo">
                 <i className="fab fa-soundcloud fa-3x"></i>
-                <h1>reSoundCloud</h1>
+                <h1>reSOUNDCLOUD</h1>
             </div>
             <GreetingContainer />
         </header>
