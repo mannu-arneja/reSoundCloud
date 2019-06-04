@@ -1,6 +1,6 @@
 import { logout } from "../../actions/session_actions";
 import { connect } from "react-redux";
-import Greeting from "./greeting";
+import PreNav from "./pre_nav";
 import { openModal } from "../../actions/modal_actions";
 
 const msp = (state) => {
@@ -16,4 +16,4 @@ const mdp = (dispatch) => {
     });
 };
 
-export default connect(msp, mdp)(Greeting);
+export default connect(msp, mdp)(PreNav);

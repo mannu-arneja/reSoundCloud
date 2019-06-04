@@ -13,7 +13,7 @@
 class Track < ApplicationRecord
 
 
-    validates :titles, presence: true
+    validates :title, presence: true
 
     belongs_to :author,
     primary_key: :id,

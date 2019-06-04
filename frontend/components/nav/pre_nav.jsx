@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Greeting({currentUser, logout, openModal}){
+function PreNav({currentUser, logout, openModal}){
 
 
     if (currentUser) {
@@ -22,4 +22,4 @@ function Greeting({currentUser, logout, openModal}){
 
 };
 
-export default Greeting;
+export default PreNav;

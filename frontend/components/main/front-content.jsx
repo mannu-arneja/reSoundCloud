@@ -7,6 +7,8 @@ function FrontContent(){
             <p>Upload your first track and begin your journey.
                 SoundCloud gives you space to create, find your fans, and connect with other artists.
             </p>
+            <br/>
+            <button className="signup-button">Start uploading today</button>
         </div>
     )
 }
