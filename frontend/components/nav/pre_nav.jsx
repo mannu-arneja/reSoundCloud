@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 
 function PreNav({currentUser, logout, openModal}){
 
+    // let $modal = document.querySelectorAll('.modal-child');
+    // function animate($modal) {
+    //     $modal.classList.toggle('animate');
+    // }
 
     if (currentUser) {
         return (
@@ -14,7 +18,7 @@ function PreNav({currentUser, logout, openModal}){
     } else {
         return (
             <nav className="signin">
-                <button className="login-button" onClick={()=>openModal('login')}>Sign in</button>
+                <button className="login-button" onClick={()=>{openModal('login')}}>Sign in</button>
                 <button className="signup-button" onClick={()=>openModal('signup')}>Create account</button>
             </nav>
         )

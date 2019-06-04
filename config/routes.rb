@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do 
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
-    resources :tracks, only: [:show, :create, :update, :destroy]
+    resources :tracks, only: [:show, :index, :create, :update, :destroy]
   end
 
   get '/api/session/check', to: 'api/sessions#check_email'

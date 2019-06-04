@@ -21,7 +21,6 @@ class SessionForm extends React.Component {
     };
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
         this.props.processForm(this.state)
     };
@@ -54,7 +53,6 @@ class SessionForm extends React.Component {
         //     });
         // }
         // return errorText;
-        debugger
         return (
             <div>
                 {this.props.errors.map((err, i) => (

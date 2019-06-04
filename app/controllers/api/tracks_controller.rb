@@ -1,5 +1,11 @@
 class Api::TracksController < ApplicationController
 
+    def index
+        # @tracks = Track.find_by(author_id: params[:author_id])
+        @tracks = Track.all
+        render :index
+    end
+
     def show
         @track = Track.find_by(id:params[:id])
         render :show
@@ -10,7 +16,8 @@ class Api::TracksController < ApplicationController
         if @track
             render :show
         else
-            render json: @track.errors.full_messages
+            render json: @track.errors.full_messages, status: 401
+        end
     end
 
     def update

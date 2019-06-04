@@ -25,6 +25,7 @@ function Modal({ modal, closeModal, login }) {
         default:
             component = null;
     };
+  
     return (
         <div className="modal-background" onClick={closeModal}>
             <i className="fas fa-times"></i>

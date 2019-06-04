@@ -1,4 +1,5 @@
 import React from 'react';
+import TrackIndex from './track_index';
 
 class Main extends React.Component {
     constructor(props){
@@ -7,7 +8,10 @@ class Main extends React.Component {
 
     render() {
         return(
-            <h1>Hear what’s trending for free in the SoundCloud community</h1>
+            <div>
+                <h1>Hear what’s trending for free in the SoundCloud community</h1>
+                <TrackIndex />
+            </div>
         )
     }
 

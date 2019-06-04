@@ -1,1 +1,1 @@
-json.extract! @track, :id, :title, :author_id, :created_at
+json.partial! '/api/tracks/track', track: @track
