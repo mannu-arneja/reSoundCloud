@@ -120,7 +120,7 @@ class SessionForm extends React.Component {
                     value={this.state.password}
                     onChange={this.handleUpdate('password')}
                     className="login-field"
-                    placeholder="Your password"
+                    placeholder="Your password *"
                 />
                 </label>
                 <br/>
