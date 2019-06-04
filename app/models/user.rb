@@ -23,6 +23,11 @@ class User < ApplicationRecord
     validates :password, length: {minimum: 6}, allow_nil: true
     ## custom validate age
 
+    has_many :tracks,
+    primary_key: :id,
+    foreign_key: :author_id,
+    class_name: 'Track'
+
     after_initialize :ensure_session_token
     attr_reader :password
 
