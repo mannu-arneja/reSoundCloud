@@ -10,13 +10,15 @@ const App = () => (
     <div className="body-container">
         <Modal />
         <header className='header-container'>
-            <div className="logo">
-                <i className="fab fa-soundcloud fa-3x"></i>
-                <h1>reSOUNDCLOUD</h1>
+            <div className='front-hero'>
+                <div className="logo">
+                    <i className="fab fa-soundcloud fa-3x"></i>
+                    <h1>reSOUNDCLOUD</h1>
+                </div>
+                <GreetingContainer />
             </div>
-            <GreetingContainer />
-        </header>
             <FrontContent />
+        </header>
     </div>
 );
 
