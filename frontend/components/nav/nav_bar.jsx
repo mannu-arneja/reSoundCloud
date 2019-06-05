@@ -1,4 +1,5 @@
 import React from 'react';
+import PreNavContainer from './pre_nav_container';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -7,7 +8,13 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <h1>navbar</h1>
+            <div className='front-hero'>
+                <div className="logo">
+                    <i className="fab fa-soundcloud fa-3x"></i>
+                    <h1>reSOUNDCLOUD</h1>
+                </div>
+                <PreNavContainer />
+            </div>
         )
     }
 
