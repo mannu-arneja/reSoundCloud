@@ -20,6 +20,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 # jquery-rails!(When using rails 5.1+)
 gem 'jquery-rails'
+gem "activestorage"
+
 # AWS S3
 gem "aws-sdk-s3"
 

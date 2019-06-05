@@ -12,8 +12,9 @@
 
 class Track < ApplicationRecord
 
-
     validates :title, presence: true
+
+    has_one_attached :audio
 
     belongs_to :author,
     primary_key: :id,
