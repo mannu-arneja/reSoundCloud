@@ -20,6 +20,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 # jquery-rails!(When using rails 5.1+)
 gem 'jquery-rails'
+# AWS S3
+gem "aws-sdk-s3"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
