@@ -1,20 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import TrackListItem from './track_list_item';
+import { fetchTracks } from '../../actions/track_actions';
 
 class TrackIndex extends React.Component {
     constructor(props) {
         super(props);
     };
     
-
-    render() {
-        return(
-            <h1>hi</h1>
-        )
+    componentDidMount(){
+        this.props.fetchTracks();
     }
-
-
-
+    
+    render() {
+        
+        if (this.props.tracks) {
+            
+            let trackList = Object.values(this.props.tracks).map(track => {
+                return  (
+                    <TrackListItem key={`track-${track.id}`} trackID={track.id}/>
+                )
+            });
+            return (
+                <ul className="track-list">
+                {trackList}
+            </ul>
+            )
+        }
+    }
 };
 
 const msp = state => {
@@ -26,8 +39,8 @@ const msp = state => {
 
 const mdp = dispatch => {
     return ({
+        fetchTracks: () => dispatch(fetchTracks())
+    })
+}
 
-    });
-};
-
-export default connect(msp,mdp)(TrackIndex);
+export default connect(msp, mdp)(TrackIndex);

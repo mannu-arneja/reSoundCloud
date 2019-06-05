@@ -11,7 +11,7 @@ export const receiveTrack = (track) => {
     })
 };
 
-export const receiveTracks = () => {
+export const receiveTracks = (tracks) => {
     return ({
         type: RECEIVE_TRACKS,
         tracks
@@ -29,8 +29,9 @@ export const fetchTrack = (id) => dispatch => {
 };
 
 export const fetchTracks = () => dispatch => {
+    // debugger
     return (
-        APIUtil.fetchTracks(id).then((track) => dispatch(receiveTracks())),
+        APIUtil.fetchTracks().then((tracks) => dispatch(receiveTracks(tracks))),
         error => dispatch({
             type: RECEIVE_TRACK_ERRORS,
             error
