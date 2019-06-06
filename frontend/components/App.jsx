@@ -7,16 +7,17 @@ import Modal from './modal/modal';
 import FrontContent from './main/front-content';
 import Main from './main/main';
 import NavBar from './nav/nav_bar';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
-    <div className="body-container">
+    <>
         <header className='header-container'>
             <Modal />
-            <NavBar />
+            <Route path="/" component={NavBar} />
         </header>
-            <FrontContent />
-        <Main />
-    </div>
+        <AuthRoute exact path="/" component={FrontContent} />
+        <ProtectedRoute path="/tracks" component={Main} />
+    </>
 );
 
 export default App;

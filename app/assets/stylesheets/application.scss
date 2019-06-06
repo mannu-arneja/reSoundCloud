@@ -25,6 +25,10 @@ body {
   position: relative;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .frontHero-container {
   border-top: 4px solid #f50;
   background-image: image_url('frontHero.jpg');
@@ -39,6 +43,7 @@ body {
 }
 
 .frontHero-content{
+  min-width: 740px;
   font-size:36px;
   position: absolute;
   color: white;
@@ -60,4 +65,14 @@ body {
   margin-bottom: 8px;
   font-size: 36px;
   font-weight: 100;
+}
+
+.main-container {
+  position: relative;
+  padding-top: 50px;
+}
+
+.main-container h1 {
+  font-size: 40px;
+
 }

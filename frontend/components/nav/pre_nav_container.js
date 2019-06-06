@@ -11,7 +11,6 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
     return ({
-        logout: () => dispatch(logout()),
         openModal: modal => dispatch(openModal(modal))
     });
 };

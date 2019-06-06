@@ -1,29 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function PreNav({currentUser, logout, openModal}){
+function PreNav({openModal}){
 
     // let $modal = document.querySelectorAll('.modal-child');
     // function animate($modal) {
     //     $modal.classList.toggle('animate');
     // }
 
-    if (currentUser) {
-        return (
-            <div className="greet">
-                <h1>{currentUser.username}!</h1>       
-                <button className="login-button" onClick={logout}>Log Out</button>
+    return (
+        <div className='banner-splash'>
+            <div className="logo">
+                <i className="fab fa-soundcloud fa-3x"></i>
+                <h1>reSOUNDCLOUD</h1>
             </div>
-        )
-    } else {
-        return (
             <nav className="signin">
                 <button className="login-button" onClick={()=>{openModal('login')}}>Sign in</button>
                 <button className="signup-button" onClick={()=>openModal('signup')}>Create account</button>
             </nav>
-        )
-    }
-
+        </div>
+    )
 };
 
 export default PreNav;
