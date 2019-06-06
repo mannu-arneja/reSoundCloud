@@ -10,13 +10,6 @@ class Main extends React.Component {
         return(
             <div className="main-container">
                 <h1>Hear what’s trending for free in the SoundCloud community</h1>
-                <h1>test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br /></h1>
-                <h1>test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br /></h1>
-                <h1>test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br /></h1>
-                <h1>test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br /></h1>
-                <h1>test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br /></h1>
-                <h1>test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br /></h1>
-                <h1>test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br />test <br /></h1>
                 <TrackIndex />
             </div>
         )

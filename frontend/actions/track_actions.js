@@ -18,23 +18,34 @@ export const receiveTracks = (tracks) => {
     })
 };
 
+export const receiveTrackErrors = (errors) => ({
+    type: RECEIVE_TRACK_ERRORS,
+    errors
+});
+
 export const fetchTrack = (id) => dispatch => {
     return (
-        APIUtil.fetchTrack(id).then((track) => dispatch(receiveTrack(track))),
+        APIUtil.fetchTrack(id).then((track) => dispatch(receiveTrack(track)),
         error => dispatch({
             type: RECEIVE_TRACK_ERRORS,
             error
-        })
+        }))
     );
 };
 
 export const fetchTracks = () => dispatch => {
-    // debugger
     return (
-        APIUtil.fetchTracks().then((tracks) => dispatch(receiveTracks(tracks))),
+        APIUtil.fetchTracks().then((tracks) => dispatch(receiveTracks(tracks)),
         error => dispatch({
             type: RECEIVE_TRACK_ERRORS,
             error
-        })
+        }))
+    );
+};
+
+export const uploadTrack = track => {
+    return (
+        APIUtil.uploadTrack(track).then(track => dispatch(receiveTrack(track)),
+        err => dispatch(receiveTrackErrors(err)))
     );
 };

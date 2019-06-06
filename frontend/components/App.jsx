@@ -8,6 +8,7 @@ import FrontContent from './main/front-content';
 import Main from './main/main';
 import NavBar from './nav/nav_bar';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import UploadForm from './upload/upload_form';
 
 const App = () => (
     <>
@@ -17,6 +18,7 @@ const App = () => (
         </header>
         <AuthRoute exact path="/" component={FrontContent} />
         <ProtectedRoute path="/tracks" component={Main} />
+        <ProtectedRoute path="/upload" component={UploadForm} />
     </>
 );
 

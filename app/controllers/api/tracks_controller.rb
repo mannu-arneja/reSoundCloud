@@ -13,7 +13,7 @@ class Api::TracksController < ApplicationController
 
     def create
         @track = Track.new(track_params)
-        if @track
+        if @track.save!
             render :show
         else
             render json: @track.errors.full_messages, status: 401

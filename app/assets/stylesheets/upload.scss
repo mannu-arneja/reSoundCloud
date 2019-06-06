@@ -1,0 +1,35 @@
+.upload-container {
+    background: white;
+    height: 600px;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.up-form {
+    border: 1px solid #f2f2f2;
+    box-shadow: 2px 2px 10px #f2f2f2;
+    width: 700px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.up-form > * {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.track-file {
+    border: 2px dotted lightgrey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dotted lightgrey;
+    width: 600px;
+    height: 100px;
+}

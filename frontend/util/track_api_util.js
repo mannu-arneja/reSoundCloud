@@ -12,3 +12,13 @@ export const fetchTracks = () => {
     })
 }
 
+export const uploadTrack = track => {
+    debugger
+    return $.ajax ({
+        method:'POST',
+        url: '/api/tracks',
+        data: track,
+        contentType: false,
+        processData: false
+    })
+}
