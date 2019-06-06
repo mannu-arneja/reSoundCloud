@@ -87,6 +87,20 @@ nav.signin {
   border-color: white
 }
 
+.nav-button {
+  background: transparent;
+  color: white;
+  padding: 15px 15px;
+  font-size: 15px;
+  border: 1px black;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  background: black;
+}
+
+
 .signup-button {
   color: white;
   background-color: #f50;
@@ -107,20 +121,20 @@ nav.signin {
 }
 
 .login-form > *{
-  font-size: 12px;
+  font-size: 17px;
   border-radius: 4px;
   margin: 5px;
   width: 85%;
 }
 .signup-form > *{
-  font-size: 12px;
+  font-size: 17px;
   border-radius: 4px;
   margin: 5px;
   width: 85%;
 }
 
 .login-form{
-  height: 85%;
+  height: 40%;
   width: 100%;
   display:flex;
   flex-direction: inherit;
@@ -133,7 +147,7 @@ input::placeholder {
 }
 
 .signup-form{
-  height: 85%;
+  height: 40%;
   width: 100%;
   display:flex;
   flex-direction: inherit;
@@ -162,4 +176,10 @@ input::placeholder {
   font-size: 15px;
   margin-left: 10px;
   cursor: pointer;
+  width: 85%;
+}
+
+.form-divide {
+  font-size: 19px;
+  margin-top: 33px;
 }

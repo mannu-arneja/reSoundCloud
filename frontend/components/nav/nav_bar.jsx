@@ -9,6 +9,7 @@ class NavBar extends React.Component {
     };
 
     render() {
+
         let { currentUser, logout } = this.props;
 
         if (currentUser) {
@@ -17,9 +18,10 @@ class NavBar extends React.Component {
                     <div className="logo">
                         <i className="fab fa-soundcloud fa-3x"></i>
                     </div>
+                    <button className='nav-button' onClick={() => this.props.history.push("/upload")}>Upload</button>
                     <div className="greet">
                         <h1>{currentUser.username}!</h1>
-                        <button className="login-button" onClick={logout}>Log Out</button>
+                        <button className="login-button" onClick={() => {logout(); this.props.history.push("/");}}>Log Out</button>
                     </div>
                 </div>
             )
