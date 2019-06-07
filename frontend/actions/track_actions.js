@@ -26,7 +26,7 @@ export const receiveTracks = (tracks) => {
 // };
 
 export const receiveTrackErrors = (errors) => ({
-    type: RECEIVE_Track_ERRORS,
+    type: RECEIVE_TRACK_ERRORS,
     errors
 });
 
