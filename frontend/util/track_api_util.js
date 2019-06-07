@@ -13,7 +13,6 @@ export const fetchTracks = () => {
 }
 
 export const uploadTrack = track => {
-    debugger
     return $.ajax ({
         method:'POST',
         url: '/api/tracks',

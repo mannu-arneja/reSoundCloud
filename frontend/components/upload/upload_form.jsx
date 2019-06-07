@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { uploadTrack } from '../../actions/track_actions';
+import { withRouter } from 'react-router-dom';
 
 class UploadForm extends React.Component {
     constructor(props) {
@@ -23,10 +24,23 @@ class UploadForm extends React.Component {
         formData.append('track[title]', this.state.title);
         formData.append('track[desc]', this.state.desc);
         formData.append('track[author_id]', this.props.currentUser.id);
-        debugger
         this.props.upload(formData).then(this.props.history.push('/tracks'))
     }
     
+    handleAudioFile() {
+        const reader = new FileReader();
+        const file = e.currentTarget.files[0];
+        reader.onloadend = () =>
+            this.setState({ audioUrl: reader.result, audioFile: file });
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            this.setState({ audioUrl: "", audioFile: null });
+        }
+        console.log(this.state.audioUrl)
+    }
+
     render() {
 
 
@@ -35,7 +49,7 @@ class UploadForm extends React.Component {
                 <div className="up-form">
                     <form onSubmit={this.handleSubmit}>
                         <div className="track-file">
-                            <input type="file" className="signup-button" ></input>
+                            <input type="file" className="signup-button"></input>
                             <label>choose file to upload</label>
                             <p>Provide FLAC, WAV, ALAC or AIFF for best audio quality.</p>
                         </div>
@@ -76,8 +90,8 @@ const msp = (state) => {
 
 const mdp = dispatch => {
     return ({
-        upload: (track) => dispatch(uploadTrack(track))
+        upload: track => dispatch(uploadTrack(track))
     })
 }
 
-export default connect(msp,mdp)(UploadForm)
+export default withRouter(connect(msp,mdp)(UploadForm))
