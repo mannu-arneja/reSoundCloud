@@ -10,8 +10,10 @@ class UploadForm extends React.Component {
             title: "",
             desc: "",
         }
-
+        this.nextForm = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleAudioFile = this.handleAudioFile.bind(this);
+        this.handleImgFile = this.handleImgFile.bind(this);
     }
 
     handleUpdate(field) {
@@ -27,7 +29,7 @@ class UploadForm extends React.Component {
         this.props.upload(formData).then(this.props.history.push('/tracks'))
     }
     
-    handleAudioFile() {
+    handleAudioFile(e) {
         const reader = new FileReader();
         const file = e.currentTarget.files[0];
         reader.onloadend = () =>
@@ -38,41 +40,72 @@ class UploadForm extends React.Component {
         } else {
             this.setState({ audioUrl: "", audioFile: null });
         }
-        console.log(this.state.audioUrl)
+        this.nextForm.current.classList.add('visible');
+    }
+
+    handleImgFile(e) {
+        const reader = new FileReader();
+        const file = e.currentTarget.files[0];
+        reader.onloadend = () =>
+            this.setState({ imageUrl: reader.result, imageFile: file });
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            this.setState({ imageUrl: "", imageFile: null });
+        }
     }
 
     render() {
 
+        // let preview = <img src="" alt=""/>
 
         return(
             <div className="upload-container">
                 <div className="up-form">
                     <form onSubmit={this.handleSubmit}>
-                        <div className="track-file">
-                            <input type="file" className="signup-button"></input>
-                            <label>choose file to upload</label>
+                        <div className="up-form-file">
+                            <div className="signup-button">
+                                <label>choose file to upload
+                                    <input type="file" className="hide" onChange={this.handleAudioFile}></input>
+                                </label>
+                            </div>
                             <p>Provide FLAC, WAV, ALAC or AIFF for best audio quality.</p>
                         </div>
-                        <label >Title *
-                            <input type="text"
-                                value={this.state.title}
-                                onChange={this.handleUpdate('title')}
-                                className="upForm-title"
-                                placeholder="Name your track" // import file name
-                            />
-                        </label>
-                        <label >Description
-                            <textarea
-                                value={this.state.desc}
-                                onChange={this.handleUpdate('desc')}
-                                className="upForm-desc"
-                                placeholder="Describe your track"
-                            />
-                        </label>
-                        <input type="submit"
-                               value="Save"
-                               className="signup-button"
-                        />
+                        <div className="up-form-next" ref={this.nextForm} >
+                            <div className="up-form-img">
+                                <div className="up-form-img-prev"></div>
+                                <label className="img-label" htmlFor="img">
+                                    <p className="up-form-img-button">
+                                        <i className="fas fa-camera"></i>
+                                        Upload image
+                                    </p>
+                                    <input type="file" onChange={this.handleImgFile}/>
+                                </label>
+                            </div>
+                            <div className="up-form-right">
+                                <label >Title *
+                                    <input type="text"
+                                        value={this.state.title}
+                                        onChange={this.handleUpdate('title')}
+                                        className="upForm-title"
+                                        placeholder="Name your track" // import file name
+                                    />
+                                </label>
+                                <label >Description
+                                    <textarea
+                                        value={this.state.desc}
+                                        onChange={this.handleUpdate('desc')}
+                                        className="upForm-desc"
+                                        placeholder="Describe your track"
+                                    />
+                                </label>
+                                <input type="submit"
+                                    value="Save"
+                                    className="up-form-button"
+                                />
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

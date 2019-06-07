@@ -29,6 +29,10 @@ body {
   position: fixed;
 }
 
+.orange {
+  background-color: #f50;
+}
+
 .frontHero-container {
   border-top: 4px solid #f50;
   background-image: image_url('frontHero.jpg');
@@ -70,9 +74,22 @@ body {
 .main-container {
   position: relative;
   padding-top: 50px;
+  background: white;
 }
 
 .main-container h1 {
   font-size: 40px;
+  text-align: center;
+  padding: 15px 0px;
+}
 
+// track index
+
+.track-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.track-list-item {
+  padding: 20px;
 }

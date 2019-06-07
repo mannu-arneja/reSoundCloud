@@ -12,6 +12,7 @@ class TrackListItem extends React.Component {
             const { id, title, author } = this.props.tracks[this.props.trackID];
             return (
                 <li className="track-list-item">
+                    <div className="track-img"></div>
                     <Link to={`/tracks/${id}`} className="track-list-title">{title}</Link>
                     <p>{author}</p>
                 </li>

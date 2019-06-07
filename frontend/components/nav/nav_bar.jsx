@@ -15,7 +15,7 @@ class NavBar extends React.Component {
         if (currentUser) {
             return (
                 <div className='banner'>
-                    <div className="logo">
+                    <div className="logo orange">
                         <i className="fab fa-soundcloud fa-3x"></i>
                     </div>
                     <button className='nav-button' onClick={() => this.props.history.push("/upload")}>Upload</button>
