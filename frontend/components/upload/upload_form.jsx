@@ -68,7 +68,7 @@ class UploadForm extends React.Component {
                 <div className="up-form">
                     <form onSubmit={this.handleSubmit}>
                         <div className="up-form-file">
-                            <div className="signup-button">
+                            <div className="up-form-button1">
                                 <label>choose file to upload
                                     <input type="file" className="hide" onChange={this.handleAudioFile}></input>
                                 </label>

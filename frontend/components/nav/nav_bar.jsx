@@ -15,10 +15,15 @@ class NavBar extends React.Component {
         if (currentUser) {
             return (
                 <div className='banner'>
-                    <div className="logo orange">
-                        <i className="fab fa-soundcloud fa-3x"></i>
+                    <div className="nav-left">
+                        <div className="logo orange">
+                            <a href="/">
+                                <i className="fab fa-soundcloud fa-3x"></i>
+                            </a>
+                        </div>
+                        <button className='nav-button' onClick={() => this.props.history.push("/")}>Home</button>
+                        <button className='nav-button' onClick={() => this.props.history.push("/upload")}>Upload</button>
                     </div>
-                    <button className='nav-button' onClick={() => this.props.history.push("/upload")}>Upload</button>
                     <div className="greet">
                         <h1>{currentUser.username}!</h1>
                         <button className="login-button" onClick={() => {logout(); this.props.history.push("/");}}>Log Out</button>
