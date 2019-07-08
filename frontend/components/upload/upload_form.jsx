@@ -9,6 +9,8 @@ class UploadForm extends React.Component {
         this.state = {
             title: "",
             desc: "",
+            audioFile: null,
+            imageFile: null,
         }
         this.nextForm = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -62,7 +64,7 @@ class UploadForm extends React.Component {
     render() {
 
         // let preview = <img src="" alt=""/>
-
+        console.log(this.state);
         return(
             <div className="upload-container">
                 <div className="up-form">
@@ -78,13 +80,13 @@ class UploadForm extends React.Component {
                         <div className="up-form-next" ref={this.nextForm} >
                             <div className="up-form-img">
                                 <div className="up-form-img-prev"></div>
-                                <label className="img-label" htmlFor="img">
-                                    <p className="up-form-img-button">
+                                <div className="up-form-img-button">
+                                    <label>
                                         <i className="fas fa-camera"></i>
                                         Upload image
-                                    </p>
-                                    <input type="file" onChange={this.handleImgFile}/>
-                                </label>
+                                        <input type="file" className='hide' onChange={this.handleImgFile}/>
+                                    </label>
+                                </div>
                             </div>
                             <div className="up-form-right">
                                 <label >Title *
