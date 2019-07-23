@@ -11,8 +11,10 @@ class UploadForm extends React.Component {
             desc: "",
             audioFile: null,
             imageFile: null,
+            imageUrl: null,
         }
         this.nextForm = React.createRef();
+        this.imgPrev = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleAudioFile = this.handleAudioFile.bind(this);
         this.handleImgFile = this.handleImgFile.bind(this);
@@ -62,12 +64,15 @@ class UploadForm extends React.Component {
         } else {
             this.setState({ imageUrl: "", imageFile: null });
         }
+        // this.imgPrev.current.classList.add('img-prev')
+
+        // change label text
+        document.getElementById("up-img-btn").childNodes[1].textContent = "Replace image"
     }
 
     render() {
-
-        // let preview = <img src="" alt=""/>
         console.log(this.state);
+        let preview = this.state.imageUrl ? <img src={this.state.imageUrl}></img> : null;
         return(
             <div className="upload-container">
                 <div className="up-form">
@@ -81,10 +86,10 @@ class UploadForm extends React.Component {
                             <p>Provide FLAC, WAV, ALAC or AIFF for best audio quality.</p>
                         </div>
                         <div className="up-form-next" ref={this.nextForm} >
-                            <div className="up-form-img">
-                                <div className="up-form-img-prev"></div>
+                            <div className="up-form-img" ref={this.imgPrev}>
+                                {preview}
                                 <div className="up-form-img-button">
-                                    <label>
+                                    <label id="up-img-btn">
                                         <i className="fas fa-camera"></i>
                                         Upload image
                                         <input type="file" className='hide' onChange={this.handleImgFile}/>
