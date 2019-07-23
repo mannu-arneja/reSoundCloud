@@ -54,11 +54,8 @@
     visibility: visible;
 }
 
-
-
 .hide {
-    width: 1px;
-    opacity: 0;
+    display: none;
 }
 
 .up-form-right {
@@ -79,14 +76,17 @@
     position: relative;
 }
 
-.img-label {
+.up-form-img-button {
     position: absolute;
     bottom: 30px;
-    left: 80px;
+    left: 70px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 5px
 }
 
-.img-label input {
-    display: none;
+.up-form-img-button i {
+    margin-right: 5px;
 }
 
 .up-form-button {
@@ -112,10 +112,4 @@
 .up-form-button1 label {
     padding: 7px 20px;
     cursor: pointer;
-}
-
-.track-img {
-    width: 160px;
-    height: 160px;
-    background-image: linear-gradient(135deg,#846170,#70929c);
 }

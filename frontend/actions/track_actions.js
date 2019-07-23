@@ -40,7 +40,9 @@ export const fetchTrack = (id) => dispatch => {
 
 export const fetchTracks = () => dispatch => {
     return (
-        APIUtil.fetchTracks().then((tracks) => dispatch(receiveTracks(tracks)),
+        APIUtil.fetchTracks().then((tracks) => {
+            dispatch(receiveTracks(tracks));
+            },
             err => dispatch(receiveTrackErrors(err)))
     );
 };
@@ -51,7 +53,7 @@ export const fetchTracks = () => dispatch => {
 //         )
 //     );
 // };
-export const uploadTrack = track => disatch => {
+export const uploadTrack = track => dispatch => {
     return (
         APIUtil.uploadTrack(track).then(track => dispatch(receiveTrack(track)),
         err => dispatch(receiveTrackErrors(err)))
