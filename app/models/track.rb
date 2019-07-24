@@ -14,7 +14,7 @@ class Track < ApplicationRecord
 
     validates :title, presence: true
 
-    validate :ensure_image
+    # validate :ensure_image
 
     has_one_attached :audio
     has_one_attached :image
@@ -24,10 +24,10 @@ class Track < ApplicationRecord
     foreign_key: :author_id,
     class_name: 'User'
     
-    def ensure_image
-        unless self.image.attached?
-            errors[:image] << "must be attached"
-        end
-    end
+#    def ensure_image
+#       unless self.image.attached?
+#            errors[:image] << "must be attached"
+#       end
+#    end
 
 end
