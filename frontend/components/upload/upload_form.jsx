@@ -61,9 +61,7 @@ class UploadForm extends React.Component {
 
         if (file) {
             reader.readAsDataURL(file);
-        } else {
-            this.setState({ imageUrl: "", imageFile: null });
-        }
+        } 
         // this.imgPrev.current.classList.add('img-prev')
 
         // change label text
