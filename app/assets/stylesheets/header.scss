@@ -2,10 +2,10 @@
 
 .header-container {
   // width: 100%;
-  // position: absolute;
+  position: absolute;
   width: 100%;
   height: 50px;
-  position: fixed;
+  // position: fixed;
   left: 0;
   z-index: 10;
 }
@@ -16,6 +16,7 @@
 
 .banner {
   position: fixed;
+  left: 0;
   width: 100%;
   height: 50px;
   color: white;
@@ -39,6 +40,7 @@
 
 .banner-splash {
   position: absolute;
+  margin: 0 auto;
   width: 100%;
   color: white;
   display: flex;
