@@ -23,10 +23,11 @@ class NavBar extends React.Component {
                         </div>
                         <button className='nav-button' onClick={() => this.props.history.push("/")}>Home</button>
                         <button className='nav-button' onClick={() => this.props.history.push("/upload")}>Upload</button>
-                    </div>
-                    <div className="greet">
-                        <h1>{currentUser.username}!</h1>
-                        <button className="login-button" onClick={() => {logout(); this.props.history.push("/");}}>Log Out</button>
+                        <div className='nav-space'>space</div>
+                        <div className="greet">
+                            <h1>{currentUser.username}!</h1>
+                            <button className="login-button" onClick={() => {logout(); this.props.history.push("/");}}>Log Out</button>
+                        </div>
                     </div>
                 </div>
             )
