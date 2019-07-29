@@ -15,9 +15,9 @@ class Player extends React.Component {
         return (
             <section className="player-section">
                 <div className="player-controls">
-                    <button className='fa fa-chevron-left'></button>
+                    <button className='fas fa-step-backward'></button>
                     <button className='fas fa-play'></button>
-                    <button className='fa fa-chevron-right'></button>
+                    <button className='fas fa-step-forward'></button>
                     ----musicPlayer----
                 </div>
             </section>
