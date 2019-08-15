@@ -11,7 +11,8 @@ class TrackListItem extends React.Component {
         // debugger;
     }
 
-    playTrack() {
+    playTrack(e) {
+        e.stopPropagation();
         debugger;
     }
 
@@ -44,6 +45,9 @@ const msp = state => {
     return ({
         tracks: state.entities.tracks
     });
+
+
+
 };
 
 
