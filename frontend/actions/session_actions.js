@@ -3,6 +3,7 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const RECEIVE_CURRENT_EMAIL = 'RECEIVE_CURRENT_EMAIL';
+export const RECEIVE_CURRENT_TRACK = 'RECEIVE_CURRENT_TRACK';
 
 // regular action creators
 export const receiveCurrentUser = (user) => {
@@ -21,6 +22,11 @@ export const receiveSessionErrors = (errors) => ({
     type: RECEIVE_SESSION_ERRORS,
     errors
 });
+
+export const receiveCurrentTrack = (id) => ({
+    type: RECEIVE_CURRENT_TRACK,
+    id
+})
 
 
 // export const login = user => dispatch => { 

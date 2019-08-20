@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { receiveCurrentTrack } from '../../actions/session_actions';
 
 class TrackListItem extends React.Component {
     constructor(props) {
         super(props);
+
+        this.playTrack = this.playTrack.bind(this);
     };
 
     componentDidMount() {
@@ -13,7 +16,8 @@ class TrackListItem extends React.Component {
 
     playTrack(e) {
         e.stopPropagation();
-        debugger;
+        dispatch(receiveCurrentTrack(this.props.trackID))
+        // debugger;
     }
 
     render() {
@@ -36,8 +40,6 @@ class TrackListItem extends React.Component {
         }
     }
 
-
-
 };
 
 const msp = state => {
@@ -45,11 +47,15 @@ const msp = state => {
     return ({
         tracks: state.entities.tracks
     });
+};
 
+const mdp = dispatch => {
 
-
+    return ({
+        receiveCurrentTrack: (id) => dispatch(receiveCurrentTrack(id))
+    });
 };
 
 
 
-export default connect(msp)(TrackListItem);
+export default connect(msp, mdp)(TrackListItem);

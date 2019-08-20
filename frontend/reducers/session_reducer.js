@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_EMAIL, RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER} from '../actions/session_actions';
+import { RECEIVE_CURRENT_EMAIL, RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_CURRENT_TRACK} from '../actions/session_actions';
 import { merge } from 'lodash';
 
 
@@ -13,6 +13,9 @@ const sessionReducer = (state={id:null}, action) => {
             return merge({}, state, {id: user.id});
         case LOGOUT_CURRENT_USER:
             return merge({}, state, { id: null});
+        case RECEIVE_CURRENT_TRACK:
+            debugger
+            return merge({}, state, {track: action.id})
         default:
             return state;
     }
