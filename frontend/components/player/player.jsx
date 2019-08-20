@@ -13,6 +13,17 @@ class Player extends React.Component {
 
     componentDidMount() {
         const audio = this.audioEl;
+        if (this.state.track_src) {
+            audio.src = this.state.track_src;
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.currentTrack !== prevProps.currentTrack) {
+            this.setState ({
+                track_src: this.props.tracks[this.props.currentTrack].audioUrl
+            })
+        }
     }
 
     render() {
@@ -35,4 +46,10 @@ class Player extends React.Component {
     
 }
 
-export default Player;
+const mapStateToProps = state => ({
+    currentTrack: state.session.track,
+    tracks: state.entities.tracks,
+})
+
+
+export default connect(mapStateToProps)(Player);

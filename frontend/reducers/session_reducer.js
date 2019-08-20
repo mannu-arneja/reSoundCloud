@@ -14,7 +14,6 @@ const sessionReducer = (state={id:null}, action) => {
         case LOGOUT_CURRENT_USER:
             return merge({}, state, { id: null});
         case RECEIVE_CURRENT_TRACK:
-            debugger
             return merge({}, state, {track: action.id})
         default:
             return state;
