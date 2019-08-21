@@ -8,21 +8,26 @@ class Player extends React.Component {
         this.state = {
             track_src: null,
         }
-
     }
 
-    componentDidMount() {
-        const audio = this.audioEl;
-        if (this.state.track_src) {
-            audio.src = this.state.track_src;
-        }
-    }
+    // componentDidMount() {
+    //     const audio = this.audioEl;
+    //     if (this.state.track_src) {
+    //         audio.src = this.state.track_src;
+    //     }
+    // }
 
     componentDidUpdate(prevProps) {
+        const audio = this.audioEl;
         if (this.props.currentTrack !== prevProps.currentTrack) {
             this.setState ({
                 track_src: this.props.tracks[this.props.currentTrack].audioUrl
+            }, () => {
+                audio.src = this.state.track_src;
+                audio.play();
             })
+
+
         }
     }
 
