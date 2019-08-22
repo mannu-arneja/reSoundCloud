@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { receiveCurrentTrack } from '../../actions/track_actions';
+import { receiveCurrentTrack, togglePause } from '../../actions/track_actions';
 
 class TrackListItem extends React.Component {
     constructor(props) {
@@ -16,7 +16,11 @@ class TrackListItem extends React.Component {
 
     playTrack(e) {
         e.stopPropagation();
-        dispatch(receiveCurrentTrack(this.props.trackID))
+        if (this.props.currentTrack !== this.props.trackID) {
+            this.props.receiveCurrentTrack(this.props.trackID);
+        } else {
+            this.props.togglePause();
+        }
         // debugger;
     }
 
@@ -24,7 +28,7 @@ class TrackListItem extends React.Component {
         if (this.props.tracks) {
             const { id, title, author, imageUrl } = this.props.tracks[this.props.trackID];
             const { paused, currentTrack } = this.props
-            const pauseStateClass = !paused && currentTrack===id ? 'fas fa-pause' : 'fas fa-play'
+            const pauseStateClass = paused && currentTrack===id ? 'fas fa-pause' : 'fas fa-play'
             return (
                 <li className="track-list-item">
                     <Link to={`/tracks/${id}`} className="track-list-title">
@@ -57,6 +61,7 @@ const mdp = dispatch => {
 
     return ({
         receiveCurrentTrack: (id) => dispatch(receiveCurrentTrack(id)),
+        togglePause: () => dispatch(togglePause())
     });
 };
 
