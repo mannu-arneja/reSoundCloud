@@ -18,17 +18,27 @@ class TrackListItem extends React.Component {
         e.stopPropagation();
         if (this.props.currentTrack !== this.props.trackID) {
             this.props.receiveCurrentTrack(this.props.trackID);
+            this.props.togglePause();
+
         } else {
             this.props.togglePause();
         }
         // debugger;
     }
 
+    componentDidUpdate() {
+        debugger;
+    }
+
     render() {
         if (this.props.tracks) {
             const { id, title, author, imageUrl } = this.props.tracks[this.props.trackID];
             const { paused, currentTrack } = this.props
-            const pauseStateClass = paused && currentTrack===id ? 'fas fa-pause' : 'fas fa-play'
+            console.log(paused)
+            let pauseStateClass = 'fas fa-play'
+            if (currentTrack) {
+                if (!paused && currentTrack===id) pauseStateClass = 'fas fa-pause';
+            }
             return (
                 <li className="track-list-item">
                     <Link to={`/tracks/${id}`} className="track-list-title">

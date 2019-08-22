@@ -28,26 +28,23 @@ class Player extends React.Component {
             //     audio.src = this.state.track_src;
             //     audio.play();
             // })
-            // this.props.togglePause();
             audio.src = this.props.tracks[this.props.currentTrack].audioUrl
-            // this.handlePlay();
+            audio.autoplay = true;
             audio.load();
-            audio.play();
+            // audio.play();
         }
         if (this.props.paused !== prevProps.paused) {
-            // this.handlePlay();
             this.props.paused ? audio.play() : audio.pause();
         }
     }
 
     handlePlay() {
         // debugger;
-        const audio = this.audioEl;
         this.props.togglePause();
     }
 
     render() {
-        const pauseStateClass = !this.props.paused ? 'fas fa-play' : 'fas fa-pause'
+        const pauseStateClass = this.props.paused ? 'fas fa-play' : 'fas fa-pause'
         return (
             <>
                 <section className="player-section">
@@ -60,8 +57,7 @@ class Player extends React.Component {
                     </div>
                 </section>
                 <audio 
-                    ref={(ref) => this.audioEl = ref}
-                    onEnded={this.handlePlay}>
+                    ref={(ref) => this.audioEl = ref}>
                 </audio>
             </>
         )
