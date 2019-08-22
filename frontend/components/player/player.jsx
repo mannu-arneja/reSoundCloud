@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {togglePause} from '../../actions/track_actions'
 
 class Player extends React.Component {
     constructor(props) {
@@ -8,6 +9,7 @@ class Player extends React.Component {
         this.state = {
             track_src: null,
         }
+        this.handlePlay = this.handlePlay.bind(this)
     }
 
     // componentDidMount() {
@@ -20,15 +22,19 @@ class Player extends React.Component {
     componentDidUpdate(prevProps) {
         const audio = this.audioEl;
         if (this.props.currentTrack !== prevProps.currentTrack) {
-            this.setState ({
-                track_src: this.props.tracks[this.props.currentTrack].audioUrl
-            }, () => {
-                audio.src = this.state.track_src;
-                audio.play();
-            })
-
-
+            // this.setState ({
+            //     track_src: this.props.tracks[this.props.currentTrack].audioUrl
+            // }, () => {
+            //     audio.src = this.state.track_src;
+            //     audio.play();
+            // })
+            audio.src = this.props.tracks[this.props.currentTrack].audioUrl
+            audio.play();
         }
+    }
+
+    handlePlay() {
+        debugger;
     }
 
     render() {
@@ -52,9 +58,14 @@ class Player extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    currentTrack: state.session.track,
+    currentTrack: state.ui.player.track,
+    paused: state.ui.player.paused,
     tracks: state.entities.tracks,
-})
+});
+
+const mapDispatchToProps = dispatch => ({
+    togglePause: dispatch(togglePause()),
+});
 
 
-export default connect(mapStateToProps)(Player);
+export default connect(mapStateToProps, mapDispatchToProps)(Player);

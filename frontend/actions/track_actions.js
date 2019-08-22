@@ -3,6 +3,8 @@ import * as APIUtil from '../util/track_api_util';
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const RECEIVE_TRACKS = 'RECEIVE_TRACKS';
 export const RECEIVE_TRACK_ERRORS = 'RECEIVE_TRACK_ERRORS';
+export const RECEIVE_CURRENT_TRACK = 'RECEIVE_CURRENT_TRACK';
+export const PAUSED = 'PAUSED';
 
 export const receiveTrack = (track) => {
     return ({
@@ -18,18 +20,17 @@ export const receiveTracks = (tracks) => {
     })
 };
 
-// export const receiveTrackErrors = (errors) => {
-//     return ({
-//         type: RECEIVE_TRACK_ERRORS,
-//         errors
-//     })
-// };
-
 export const receiveTrackErrors = (errors) => ({
     type: RECEIVE_TRACK_ERRORS,
     errors
 });
 
+export const receiveCurrentTrack = (id) => ({
+    type: RECEIVE_CURRENT_TRACK,
+    id
+})
+
+export const togglePause = () => ({type: PAUSED})
 
 export const fetchTrack = (id) => dispatch => {
     return (
@@ -47,12 +48,6 @@ export const fetchTracks = () => dispatch => {
     );
 };
 
-// export const uploadTrack = track => dispatch => {
-//     return (
-//         APIUtil.uploadTrack(track).then(track => dispatch(receiveTrack(track)),
-//         )
-//     );
-// };
 export const uploadTrack = track => dispatch => {
     return (
         APIUtil.uploadTrack(track).then(track => dispatch(receiveTrack(track)),

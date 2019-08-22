@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { receiveCurrentTrack } from '../../actions/session_actions';
+import { receiveCurrentTrack } from '../../actions/track_actions';
 
 class TrackListItem extends React.Component {
     constructor(props) {
@@ -45,14 +45,15 @@ class TrackListItem extends React.Component {
 const msp = state => {
 
     return ({
-        tracks: state.entities.tracks
+        tracks: state.entities.tracks,
+        paused: state.ui.player.paused
     });
 };
 
 const mdp = dispatch => {
 
     return ({
-        receiveCurrentTrack: (id) => dispatch(receiveCurrentTrack(id))
+        receiveCurrentTrack: (id) => dispatch(receiveCurrentTrack(id)),
     });
 };
 
