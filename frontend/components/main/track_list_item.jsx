@@ -23,6 +23,8 @@ class TrackListItem extends React.Component {
     render() {
         if (this.props.tracks) {
             const { id, title, author, imageUrl } = this.props.tracks[this.props.trackID];
+            const { paused, currentTrack } = this.props
+            const pauseStateClass = !paused && currentTrack===id ? 'fas fa-pause' : 'fas fa-play'
             return (
                 <li className="track-list-item">
                     <Link to={`/tracks/${id}`} className="track-list-title">
@@ -33,7 +35,7 @@ class TrackListItem extends React.Component {
                     <p>{author}</p>
                     </Link>
                     <div className='play-button' onClick={this.playTrack}>
-                        <i className="fas fa-play"></i>
+                        <i className={pauseStateClass}></i>
                     </div>
                 </li>
             )
@@ -46,7 +48,8 @@ const msp = state => {
 
     return ({
         tracks: state.entities.tracks,
-        paused: state.ui.player.paused
+        paused: state.ui.player.paused,
+        currentTrack: state.ui.player.track
     });
 };
 

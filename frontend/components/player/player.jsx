@@ -29,27 +29,33 @@ class Player extends React.Component {
             //     audio.play();
             // })
             audio.src = this.props.tracks[this.props.currentTrack].audioUrl
-            audio.play();
+            this.handlePlay();
         }
     }
 
     handlePlay() {
-        debugger;
+        // debugger;
+        const audio = this.audioEl;
+        this.props.paused ? audio.play() : audio.pause();
+        this.props.togglePause();
     }
 
     render() {
+        const pauseStateClass = this.props.paused ? 'fas fa-play' : 'fas fa-pause'
         return (
             <>
                 <section className="player-section">
                     <div className="player-controls">
                         <button className='fas fa-step-backward'></button>
-                        <button className='fas fa-play'></button>
+                        <button className={pauseStateClass}
+                                onClick={this.handlePlay}></button>
                         <button className='fas fa-step-forward'></button>
                         ----musicPlayer----
                     </div>
                 </section>
                 <audio 
-                    ref={(ref) => this.audioEl = ref}>
+                    ref={(ref) => this.audioEl = ref}
+                    onEnded={this.handlePlay}>
                 </audio>
             </>
         )
@@ -64,7 +70,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    togglePause: dispatch(togglePause()),
+    togglePause: () => dispatch(togglePause()),
 });
 
 
