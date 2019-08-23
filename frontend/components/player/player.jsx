@@ -9,15 +9,8 @@ class Player extends React.Component {
         this.state = {
             track_src: null,
         }
-        this.handlePlay = this.handlePlay.bind(this)
+        // this.handlePlay = this.handlePlay.bind(this)
     }
-
-    // componentDidMount() {
-    //     const audio = this.audioEl;
-    //     if (this.state.track_src) {
-    //         audio.src = this.state.track_src;
-    //     }
-    // }
 
     componentDidUpdate(prevProps) {
         const audio = this.audioEl;
@@ -29,19 +22,21 @@ class Player extends React.Component {
             //     audio.play();
             // })
             audio.src = this.props.tracks[this.props.currentTrack].audioUrl
-            audio.autoplay = true;
             audio.load();
-            // audio.play();
+            if (!this.props.paused) {
+                audio.oncanplay = function() {
+                    this.play();
+                }
+            }
         }
         if (this.props.paused !== prevProps.paused) {
-            this.props.paused ? audio.play() : audio.pause();
+            this.props.paused ? audio.pause() : audio.play();
         }
     }
 
-    handlePlay() {
-        // debugger;
-        this.props.togglePause();
-    }
+    // handlePlay() {
+    //     this.props.togglePause();
+    // }
 
     render() {
         const pauseStateClass = this.props.paused ? 'fas fa-play' : 'fas fa-pause'
@@ -51,7 +46,7 @@ class Player extends React.Component {
                     <div className="player-controls">
                         <button className='fas fa-step-backward'></button>
                         <button className={pauseStateClass}
-                                onClick={this.handlePlay}></button>
+                                onClick={this.props.togglePause}></button>
                         <button className='fas fa-step-forward'></button>
                         ----musicPlayer----
                     </div>

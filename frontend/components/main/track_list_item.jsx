@@ -18,16 +18,16 @@ class TrackListItem extends React.Component {
         e.stopPropagation();
         if (this.props.currentTrack !== this.props.trackID) {
             this.props.receiveCurrentTrack(this.props.trackID);
-            this.props.togglePause();
-
+            if (this.props.paused) {
+                this.props.togglePause();
+            }
         } else {
             this.props.togglePause();
         }
-        // debugger;
     }
 
     componentDidUpdate() {
-        debugger;
+        // debugger;
     }
 
     render() {
