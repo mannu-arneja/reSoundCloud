@@ -9,7 +9,7 @@ class Player extends React.Component {
         this.state = {
             track_src: null,
         }
-        // this.handlePlay = this.handlePlay.bind(this)
+        this.handlePlay = this.handlePlay.bind(this)
     }
 
     componentDidUpdate(prevProps) {
@@ -22,21 +22,24 @@ class Player extends React.Component {
             //     audio.play();
             // })
             audio.src = this.props.tracks[this.props.currentTrack].audioUrl
+            audio.autoplay = true;
             audio.load();
-            if (!this.props.paused) {
-                audio.oncanplay = function() {
-                    this.play();
-                }
-            }
+            // if (!this.props.paused) {
+            //     audio.oncanplay = function() {
+            //         this.play();
+            //     }
+            // }
         }
         if (this.props.paused !== prevProps.paused) {
             this.props.paused ? audio.pause() : audio.play();
         }
     }
 
-    // handlePlay() {
-    //     this.props.togglePause();
-    // }
+    handlePlay() {
+        if (this.props.currentTrack) {
+            this.props.togglePause();
+        }
+    }
 
     render() {
         const pauseStateClass = this.props.paused ? 'fas fa-play' : 'fas fa-pause'
@@ -46,13 +49,14 @@ class Player extends React.Component {
                     <div className="player-controls">
                         <button className='fas fa-step-backward'></button>
                         <button className={pauseStateClass}
-                                onClick={this.props.togglePause}></button>
+                                onClick={this.handlePlay}></button>
                         <button className='fas fa-step-forward'></button>
                         ----musicPlayer----
                     </div>
                 </section>
                 <audio 
-                    ref={(ref) => this.audioEl = ref}>
+                    ref={(ref) => this.audioEl = ref}
+                    onEnded={this.handlePlay}>
                 </audio>
             </>
         )
