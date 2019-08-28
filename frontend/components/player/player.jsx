@@ -51,7 +51,9 @@ class Player extends React.Component {
                         <button className={pauseStateClass}
                                 onClick={this.handlePlay}></button>
                         <button className='fas fa-step-forward'></button>
-                        ----musicPlayer----
+                        <div className='player-progress'>
+                            <div className='progress-bar'></div>
+                        </div>
                     </div>
                 </section>
                 <audio 

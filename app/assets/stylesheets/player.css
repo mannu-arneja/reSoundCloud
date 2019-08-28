@@ -20,13 +20,28 @@ footer {
     height: 48px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.player-controls button{
+.player-controls button {
     width: 24px;
     height: 100%;
     margin: 0 0 0 12px;
     border: none;
     background: transparent;
     font-size: 12px;
+}
+
+.player-progress {
+    height: 1px;
+    width: 350px;
+    background-color: grey;
+    margin-left: 12px;
+}
+
+.progress-bar {
+    position: relative;
+    height: 1px;
+    width: 50%;
+    background-color: #ff5500;
 }
