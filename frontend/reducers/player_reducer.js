@@ -9,7 +9,6 @@ const playerReducer = (state={paused:true}, action) => {
         case PAUSED:
             return merge({}, state, {paused: !state.paused})
         case UPDATE_TIME:
-            debugger;
             return merge({}, state, {currentTime: action.time})
         default:
             return state;

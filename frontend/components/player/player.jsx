@@ -51,6 +51,10 @@ class Player extends React.Component {
 
     render() {
         const pauseStateClass = this.props.paused ? 'fas fa-play' : 'fas fa-pause'
+        let currentTime;
+        if (this.props.currentTime) {
+            currentTime = Math.floor(this.props.currentTime);
+        }
         return (
             <>
                 <section className="player-section">
@@ -62,7 +66,7 @@ class Player extends React.Component {
                         <div className='player-progress'>
                             <div className='progress-bar'></div>
                         </div>
-                        <div className='progress-time'></div>
+                        <div className='progress-time'>{currentTime}</div>
                     </div>
                 </section>
                 <audio 
@@ -79,6 +83,7 @@ class Player extends React.Component {
 const mapStateToProps = state => ({
     currentTrack: state.ui.player.track,
     paused: state.ui.player.paused,
+    currentTime: state.ui.player.currentTime,
     tracks: state.entities.tracks,
 });
 

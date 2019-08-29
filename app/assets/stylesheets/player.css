@@ -45,3 +45,7 @@ footer {
     width: 50%;
     background-color: #ff5500;
 }
+
+.progress-time {
+    margin-left: 12px;
+}
