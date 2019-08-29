@@ -32,6 +32,11 @@ footer {
     font-size: 12px;
 }
 
+.player-controls span {
+    margin-left: 12px;
+    color: black;
+}
+
 .player-progress {
     height: 1px;
     width: 350px;

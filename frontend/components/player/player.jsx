@@ -44,7 +44,6 @@ class Player extends React.Component {
 
     handleTime() {
         const audio = this.audioEl
-        console.log(Math.floor(audio.currentTime))
         this.props.updateTime(audio.currentTime)
         // debugger;
     }
@@ -52,8 +51,10 @@ class Player extends React.Component {
     render() {
         const pauseStateClass = this.props.paused ? 'fas fa-play' : 'fas fa-pause'
         let currentTime;
-        if (this.props.currentTime) {
-            currentTime = Math.floor(this.props.currentTime);
+        let duration;
+        if (this.audioEl) {
+            currentTime = this.props.currentTime ? Math.floor(this.props.currentTime) : " ";
+            duration = this.audioEl.duration ? this.audioEl.duration : " ";
         }
         return (
             <>
@@ -63,10 +64,11 @@ class Player extends React.Component {
                         <button className={pauseStateClass}
                                 onClick={this.handlePlay}></button>
                         <button className='fas fa-step-forward'></button>
+                        <span>{currentTime}</span>
                         <div className='player-progress'>
                             <div className='progress-bar'></div>
                         </div>
-                        <div className='progress-time'>{currentTime}</div>
+                        <span>{duration}</span>
                     </div>
                 </section>
                 <audio 
