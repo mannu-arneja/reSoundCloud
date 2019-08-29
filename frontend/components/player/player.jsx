@@ -53,8 +53,8 @@ class Player extends React.Component {
         let currentTime;
         let duration;
         if (this.audioEl) {
-            currentTime = this.props.currentTime ? Math.floor(this.props.currentTime) : " ";
-            duration = this.audioEl.duration ? this.audioEl.duration : " ";
+            currentTime = this.props.currentTime ? formatTime(this.props.currentTime) : " ";
+            duration = this.audioEl.duration ? formatTime(this.audioEl.duration) : " ";
         }
         return (
             <>
@@ -80,6 +80,22 @@ class Player extends React.Component {
         )
     }
     
+}
+
+function formatTime(s) {
+
+    let time = new Date()
+
+    time.setMinutes(0);
+    time.setSeconds(Math.floor(s));
+    
+    let minutes = time.getMinutes();
+    let seconds = time.getSeconds();
+    
+    minutes = (minutes < 10) ? `0${minutes}` : minutes;
+    seconds = (seconds < 10) ? `0${seconds}` : seconds;
+
+    return (`${minutes}:${seconds}`)
 }
 
 const mapStateToProps = state => ({
