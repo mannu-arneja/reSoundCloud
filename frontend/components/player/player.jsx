@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {togglePause} from '../../actions/track_actions'
+import {togglePause, updateTime} from '../../actions/track_actions'
 
 class Player extends React.Component {
     constructor(props) {
@@ -10,6 +10,7 @@ class Player extends React.Component {
             track_src: null,
         }
         this.handlePlay = this.handlePlay.bind(this)
+        this.handleTime = this.handleTime.bind(this)
     }
 
     componentDidUpdate(prevProps) {
@@ -41,6 +42,13 @@ class Player extends React.Component {
         }
     }
 
+    handleTime() {
+        const audio = this.audioEl
+        console.log(Math.floor(audio.currentTime))
+        this.props.updateTime(audio.currentTime)
+        // debugger;
+    }
+
     render() {
         const pauseStateClass = this.props.paused ? 'fas fa-play' : 'fas fa-pause'
         return (
@@ -54,11 +62,13 @@ class Player extends React.Component {
                         <div className='player-progress'>
                             <div className='progress-bar'></div>
                         </div>
+                        <div className='progress-time'></div>
                     </div>
                 </section>
                 <audio 
                     ref={(ref) => this.audioEl = ref}
-                    onEnded={this.handlePlay}>
+                    onEnded={this.handlePlay}
+                    onTimeUpdate={this.handleTime}>
                 </audio>
             </>
         )
@@ -74,6 +84,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     togglePause: () => dispatch(togglePause()),
+    updateTime: (time) => dispatch(updateTime(time)),
 });
 
 

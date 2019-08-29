@@ -5,6 +5,7 @@ export const RECEIVE_TRACKS = 'RECEIVE_TRACKS';
 export const RECEIVE_TRACK_ERRORS = 'RECEIVE_TRACK_ERRORS';
 export const RECEIVE_CURRENT_TRACK = 'RECEIVE_CURRENT_TRACK';
 export const PAUSED = 'PAUSED';
+export const UPDATE_TIME = 'UPDATE_TIME';
 
 export const receiveTrack = (track) => {
     return ({
@@ -31,6 +32,11 @@ export const receiveCurrentTrack = (id) => ({
 })
 
 export const togglePause = () => ({type: PAUSED})
+
+export const updateTime = (time) => ({
+    type: UPDATE_TIME,
+    time
+})
 
 export const fetchTrack = (id) => dispatch => {
     return (
