@@ -11,9 +11,11 @@ class Player extends React.Component {
             progress: 0,
             seeking: false,
         }
+
         this.handlePlay = this.handlePlay.bind(this);
         this.handleTime = this.handleTime.bind(this);
         this.startSeek = this.startSeek.bind(this);
+        this.stopSeek = this.stopSeek.bind(this);
         this.seek = this.seek.bind(this);
     }
 
@@ -49,20 +51,37 @@ class Player extends React.Component {
     handleTime() {
         const audio = this.audioEl
         this.props.updateTime(audio.currentTime)
+        this.setState({
+            progress: audio.currentTime / audio.duration
+        })
         // debugger;
     }
 
     startSeek(e) {
         this.setState({
             seeking: true
-        });
-        this.seek(e)
+        }, 
+        () => this.seek(e));
     }
 
     seek(e) {
-        console.log(e.clientX)
-        let progress = (e.clientX - this._barSeek.offsetLeft) / this._barSeek
+        let progress = (e.clientX - this._barSeek.offsetLeft) / this._barSeek.clientWidth
         debugger;
+
+        if (this.state.seeking) {
+            this.setState({
+                progress: progress
+            })
+        }
+
+        console.log(this.state.progress)
+    }
+
+    stopSeek(e){
+        this.setState({
+            seeking: false
+        });
+        this.audioEl.currentTime = this.audioEl.duration * this.state.progress;
     }
 
     render() {
@@ -91,7 +110,8 @@ class Player extends React.Component {
                             </div>
                             <div className='progress-bar-seek'
                                  ref={(ref) => this._barSeek  = ref}
-                                 onMouseDown={this.startSeek}>
+                                 onMouseDown={this.startSeek}
+                                 onMouseUp={this.stopSeek}>
                             </div>
                         </div>
                         <span>{duration}</span>
