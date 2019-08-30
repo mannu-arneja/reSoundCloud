@@ -13,6 +13,7 @@ class Player extends React.Component {
         }
 
         this.writePending = false;
+        this.seekHead = false;
         this.handlePlay = this.handlePlay.bind(this);
         this.handleTime = this.handleTime.bind(this);
         this.handleBack = this.handleBack.bind(this);
@@ -92,9 +93,9 @@ class Player extends React.Component {
         this.setState({
             seeking: false
         });
-        // this.audioEl.currentTime = this.audioEl.duration * this.state.progress;
         this.seek(e)
         console.log(this.state.progress)
+        // this.seekHead = false;
     }
 
     render() {
@@ -121,7 +122,7 @@ class Player extends React.Component {
                         <button className={pauseStateClass}
                                 onClick={this.handlePlay}>
                         </button>
-                        <button className='fas fa-step-forward'></button>
+                        <button className='fas fa-step-forward button-disabled'></button>
                         <span className="player-time">{currentTime}</span>
                         <div className='player-progress'>
                             <div className='progress-bar'
@@ -133,7 +134,12 @@ class Player extends React.Component {
                                  onMouseDown={this.startSeek}
                                  onMouseMove={this.seek}
                                  onMouseUp={this.stopSeek}
-                                 onMouseLeave={this.stopSeek}>
+                                 onMouseLeave={(this.stopSeek, ()=> this.seekHead = false)}
+                                 onMouseOver={() => this.seekHead = true}>
+                            </div>
+                            <div className={"progress-head " + (this.seekHead ? 'playhead-show' : '')}
+                                 style={{left: (this.state.progress * 100) + '%'}}>
+
                             </div>
                         </div>
                         <span>{duration}</span>
@@ -160,7 +166,7 @@ function formatTime(s) {
     let minutes = time.getMinutes();
     let seconds = time.getSeconds();
     
-    minutes = (minutes < 10) ? `0${minutes}` : minutes;
+    // minutes = (minutes < 10) ? `0${minutes}` : minutes;
     seconds = (seconds < 10) ? `0${seconds}` : seconds;
 
     return (`${minutes}:${seconds}`)
