@@ -12,6 +12,7 @@ class Player extends React.Component {
             seeking: false,
         }
 
+        this.writePending = false;
         this.handlePlay = this.handlePlay.bind(this);
         this.handleTime = this.handleTime.bind(this);
         this.startSeek = this.startSeek.bind(this);
@@ -60,28 +61,29 @@ class Player extends React.Component {
     startSeek(e) {
         this.setState({
             seeking: true
-        }, 
-        () => this.seek(e));
+        });
+
+        this.seek(e)
     }
 
     seek(e) {
-        let progress = (e.clientX - this._barSeek.offsetLeft) / this._barSeek.clientWidth
-        debugger;
-
         if (this.state.seeking) {
+            let progress = (e.clientX - this._barSeek.offsetLeft) / this._barSeek.clientWidth
             this.setState({
                 progress: progress
-            })
+            });
+            this.writePending = true;
         }
-
-        console.log(this.state.progress)
+        
     }
-
+    
     stopSeek(e){
         this.setState({
             seeking: false
         });
-        this.audioEl.currentTime = this.audioEl.duration * this.state.progress;
+        // this.audioEl.currentTime = this.audioEl.duration * this.state.progress;
+        this.seek(e)
+        console.log(this.state.progress)
     }
 
     render() {
@@ -93,6 +95,10 @@ class Player extends React.Component {
         }
         if (this.props.currentTrack) {
             duration = this.audioEl.duration ? formatTime(this.audioEl.duration) : " ";
+        }
+        if (this.writePending) {
+            this.writePending = false;
+            this.audioEl.currentTime = this.audioEl.duration * this.state.progress;
         }
         return (
             <>
@@ -111,7 +117,9 @@ class Player extends React.Component {
                             <div className='progress-bar-seek'
                                  ref={(ref) => this._barSeek  = ref}
                                  onMouseDown={this.startSeek}
-                                 onMouseUp={this.stopSeek}>
+                                 onMouseMove={this.seek}
+                                 onMouseUp={this.stopSeek}
+                                 onMouseLeave={this.stopSeek}>
                             </div>
                         </div>
                         <span>{duration}</span>
