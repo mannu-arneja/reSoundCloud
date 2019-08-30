@@ -40,7 +40,13 @@ footer {
 
 .player-controls span {
     margin-left: 12px;
-    color: black;
+    width: 37px;
+    font-size: 12px;
+    font: 12px/1.4 "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+}
+
+.player-time {
+    color: #f50;
 }
 
 .player-progress {

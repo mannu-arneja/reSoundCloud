@@ -15,6 +15,7 @@ class Player extends React.Component {
         this.writePending = false;
         this.handlePlay = this.handlePlay.bind(this);
         this.handleTime = this.handleTime.bind(this);
+        this.handleBack = this.handleBack.bind(this);
         this.startSeek = this.startSeek.bind(this);
         this.stopSeek = this.stopSeek.bind(this);
         this.seek = this.seek.bind(this);
@@ -56,6 +57,16 @@ class Player extends React.Component {
             progress: audio.currentTime / audio.duration
         })
         // debugger;
+    }
+
+    handleBack() {
+        this.setState({
+            progress: 0
+        })
+        this.writePending = true;
+        if (this.props.paused) {
+            this.handlePlay();
+        }
     }
 
     startSeek(e) {
@@ -104,11 +115,14 @@ class Player extends React.Component {
             <>
                 <section className={"player-section " + (this.props.currentTrack ? 'player-show' : '')}>
                     <div className="player-controls">
-                        <button className='fas fa-step-backward'></button>
+                        <button className='fas fa-step-backward'
+                                onClick={this.handleBack}>
+                        </button>
                         <button className={pauseStateClass}
-                                onClick={this.handlePlay}></button>
+                                onClick={this.handlePlay}>
+                        </button>
                         <button className='fas fa-step-forward'></button>
-                        <span>{currentTime}</span>
+                        <span className="player-time">{currentTime}</span>
                         <div className='player-progress'>
                             <div className='progress-bar'
                                  ref={(ref) => this._bar  = ref} 
