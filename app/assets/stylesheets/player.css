@@ -48,6 +48,8 @@ footer {
     width: 350px;
     background-color: grey;
     margin-left: 12px;
+    display: flex;
+    align-items: center;
 }
 
 .progress-bar {
@@ -57,6 +59,8 @@ footer {
     background-color: #ff5500;
 }
 
-.progress-time {
-    margin-left: 12px;
+.progress-bar-seek {
+    width: 350px;
+    height: 30px;
+    background: transparent;
 }

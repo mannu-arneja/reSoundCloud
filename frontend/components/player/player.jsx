@@ -9,9 +9,12 @@ class Player extends React.Component {
         this.state = {
             track_src: null,
             progress: 0,
+            seeking: false,
         }
-        this.handlePlay = this.handlePlay.bind(this)
-        this.handleTime = this.handleTime.bind(this)
+        this.handlePlay = this.handlePlay.bind(this);
+        this.handleTime = this.handleTime.bind(this);
+        this.startSeek = this.startSeek.bind(this);
+        this.seek = this.seek.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -49,6 +52,19 @@ class Player extends React.Component {
         // debugger;
     }
 
+    startSeek(e) {
+        this.setState({
+            seeking: true
+        });
+        this.seek(e)
+    }
+
+    seek(e) {
+        console.log(e.clientX)
+        let progress = (e.clientX - this._barSeek.offsetLeft) / this._barSeek
+        debugger;
+    }
+
     render() {
         const pauseStateClass = this.props.paused ? 'fas fa-play' : 'fas fa-pause'
         let currentTime;
@@ -69,7 +85,14 @@ class Player extends React.Component {
                         <button className='fas fa-step-forward'></button>
                         <span>{currentTime}</span>
                         <div className='player-progress'>
-                            <div className='progress-bar'></div>
+                            <div className='progress-bar'
+                                 ref={(ref) => this._bar  = ref} 
+                                 style={{width: (this.state.progress * 100) + '%'}}>
+                            </div>
+                            <div className='progress-bar-seek'
+                                 ref={(ref) => this._barSeek  = ref}
+                                 onMouseDown={this.startSeek}>
+                            </div>
                         </div>
                         <span>{duration}</span>
                     </div>
