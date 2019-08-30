@@ -13,7 +13,13 @@ footer {
     bottom: 0;
     z-index: 10;
     background-color: #f2f2f2;
-    border-top: 1px solid #cecece
+    border-top: 1px solid #cecece;
+    transition: transform 200ms ease-out;
+    transform: translateY(100%);
+}
+
+.player-show {
+    transform: translateY(0);
 }
 
 .player-controls {

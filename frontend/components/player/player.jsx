@@ -8,6 +8,7 @@ class Player extends React.Component {
 
         this.state = {
             track_src: null,
+            progress: 0,
         }
         this.handlePlay = this.handlePlay.bind(this)
         this.handleTime = this.handleTime.bind(this)
@@ -54,11 +55,13 @@ class Player extends React.Component {
         let duration;
         if (this.audioEl) {
             currentTime = this.props.currentTime ? formatTime(this.props.currentTime) : " ";
+        }
+        if (this.props.currentTrack) {
             duration = this.audioEl.duration ? formatTime(this.audioEl.duration) : " ";
         }
         return (
             <>
-                <section className="player-section">
+                <section className={"player-section " + (this.props.currentTrack ? 'player-show' : '')}>
                     <div className="player-controls">
                         <button className='fas fa-step-backward'></button>
                         <button className={pauseStateClass}
