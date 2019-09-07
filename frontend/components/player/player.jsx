@@ -54,9 +54,11 @@ class Player extends React.Component {
     handleTime() {
         const audio = this.audioEl
         this.props.updateTime(audio.currentTime)
-        this.setState({
-            progress: audio.currentTime / audio.duration
-        })
+        if (!this.state.seeking) {
+            this.setState({
+                progress: audio.currentTime / audio.duration
+            })
+        }
         // debugger;
     }
 
@@ -71,8 +73,10 @@ class Player extends React.Component {
     }
 
     startSeek(e) {
+        let progress = (e.clientX - this._barSeek.offsetLeft) / this._barSeek.clientWidth
         this.setState({
-            seeking: true
+            seeking: true,
+            progress: progress
         });
 
         this.seek(e)
@@ -84,7 +88,7 @@ class Player extends React.Component {
             this.setState({
                 progress: progress
             });
-            this.writePending = true;
+            // this.writePending = true;
         }
         
     }
@@ -95,6 +99,8 @@ class Player extends React.Component {
         });
         this.seek(e)
         console.log(this.state.progress)
+        this.writePending = true;
+
         // this.seekHead = false;
     }
 
@@ -103,10 +109,14 @@ class Player extends React.Component {
         let currentTime;
         let duration;
         if (this.audioEl) {
-            currentTime = this.props.currentTime ? formatTime(this.props.currentTime) : " ";
-        }
-        if (this.props.currentTrack) {
-            duration = this.audioEl.duration ? formatTime(this.audioEl.duration) : " ";
+            if (this.props.currentTrack) {
+                duration = this.audioEl.duration ? formatTime(this.audioEl.duration) : " ";
+            }
+            if (this.state.seeking) {
+                currentTime = formatTime(this.audioEl.duration * this.state.progress)
+            } else {
+                currentTime = this.props.currentTime ? formatTime(this.props.currentTime) : " ";
+            }
         }
         if (this.writePending) {
             this.writePending = false;
