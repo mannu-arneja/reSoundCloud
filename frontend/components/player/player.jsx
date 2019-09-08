@@ -22,6 +22,15 @@ class Player extends React.Component {
         this.seek = this.seek.bind(this);
     }
 
+    componentDidMount() {
+        document.addEventListener('mousemove', e => {
+            this.seek(e)
+        });
+        document.addEventListener('mouseup', e => {
+            this.stopSeek(e)
+        });
+    }
+
     componentDidUpdate(prevProps) {
         const audio = this.audioEl;
         if (this.props.currentTrack !== prevProps.currentTrack) {
@@ -73,24 +82,28 @@ class Player extends React.Component {
     }
 
     startSeek(e) {
-        let progress = (e.clientX - this._barSeek.offsetLeft) / this._barSeek.clientWidth
+        e.preventDefault();
+        let progressPx = e.clientX - this._barSeek.offsetLeft - 1;
+        let progress = progressPx / this._barSeek.clientWidth
         this.setState({
             seeking: true,
             progress: progress
         });
-
         this.seek(e)
     }
 
     seek(e) {
         if (this.state.seeking) {
-            let progress = (e.clientX - this._barSeek.offsetLeft) / this._barSeek.clientWidth
+            let progressPx = e.clientX - this._barSeek.offsetLeft;
+            if (progressPx < 0) return 0;
+            if (progressPx > 350) return 350;
+            let progress = progressPx / this._barSeek.clientWidth
             this.setState({
                 progress: progress
             });
             // this.writePending = true;
+            console.log(e.clientX - this._barSeek.offsetLeft)
         }
-        
     }
     
     stopSeek(e){
@@ -98,10 +111,7 @@ class Player extends React.Component {
             seeking: false
         });
         this.seek(e)
-        console.log(this.state.progress)
         this.writePending = true;
-
-        // this.seekHead = false;
     }
 
     render() {
@@ -111,16 +121,16 @@ class Player extends React.Component {
         if (this.audioEl) {
             if (this.props.currentTrack) {
                 duration = this.audioEl.duration ? formatTime(this.audioEl.duration) : " ";
+                if (this.writePending && this.audioEl.duration) {
+                    this.writePending = false;
+                    this.audioEl.currentTime = this.audioEl.duration * this.state.progress;
+                }
             }
             if (this.state.seeking) {
                 currentTime = formatTime(this.audioEl.duration * this.state.progress)
             } else {
                 currentTime = this.props.currentTime ? formatTime(this.props.currentTime) : " ";
             }
-        }
-        if (this.writePending) {
-            this.writePending = false;
-            this.audioEl.currentTime = this.audioEl.duration * this.state.progress;
         }
         return (
             <>
@@ -141,18 +151,20 @@ class Player extends React.Component {
                             </div>
                             <div className='progress-bar-seek'
                                  ref={(ref) => this._barSeek  = ref}
-                                 onMouseDown={this.startSeek}
-                                 onMouseMove={this.seek}
-                                 onMouseUp={this.stopSeek}
-                                 onMouseLeave={(this.stopSeek, ()=> this.seekHead = false)}
-                                 onMouseOver={() => this.seekHead = true}>
-                            </div>
-                            <div className={"progress-head " + (this.seekHead ? 'playhead-show' : '')}
-                                 style={{left: (this.state.progress * 100) + '%'}}>
+                                 onMouseDown={this.startSeek}>
 
+                            </div>
+                            <div className={"progress-head " + (this.state.seeking ? 'playhead-show' : '')}
+                                 style={{left: (this.state.progress * 100) + '%'}}>
                             </div>
                         </div>
                         <span>{duration}</span>
+                        <div className='volume'>
+                            <button className='fas fa-volume-up'></button>
+                            <div className='volume-bar'></div>
+                            <div className='volume-bar-seek'></div>
+                            <div className='volume-bar-head'></div>
+                        </div>
                     </div>
                 </section>
                 <audio 
@@ -163,7 +175,6 @@ class Player extends React.Component {
             </>
         )
     }
-    
 }
 
 function formatTime(s) {

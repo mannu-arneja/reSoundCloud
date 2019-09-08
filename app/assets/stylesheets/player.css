@@ -79,6 +79,10 @@ footer {
     cursor: pointer;
 }
 
+.progress-bar-seek:hover + .progress-head {
+    opacity: 1;
+}
+
 .progress-head {
     border: 1px solid #f50;
     border-radius: 100%;
@@ -87,9 +91,25 @@ footer {
     background-color: #f50;
     box-sizing: border-box;
     opacity: 0;
+    cursor: pointer;
     transition: opacity 150ms;
+    margin-left: -4px;
 }
+
 
 .playhead-show {
     opacity: 1;
+}
+
+.volume {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.volume-bar {
+    position: absolute;
+    background-color: grey;
+    height: 20px;
+    width: 8px;
 }
