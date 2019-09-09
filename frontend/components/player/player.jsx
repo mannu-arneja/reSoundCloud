@@ -71,11 +71,12 @@ class Player extends React.Component {
         // debugger;
     }
 
-    handleBack() {
+    handleBack(e) {
+        this.writePending = true;
         this.setState({
             progress: 0
-        })
-        this.writePending = true;
+        }, () => this.stopSeek(e))
+
         if (this.props.paused) {
             this.handlePlay();
         }
@@ -83,12 +84,13 @@ class Player extends React.Component {
 
     startSeek(e) {
         e.preventDefault();
-        let progressPx = e.clientX - this._barSeek.offsetLeft - 1;
+        let progressPx = e.clientX - this._barSeek.offsetLeft;
         let progress = progressPx / this._barSeek.clientWidth
         this.setState({
             seeking: true,
             progress: progress
         });
+        this.writePending = true;
         this.seek(e)
     }
 
@@ -111,7 +113,11 @@ class Player extends React.Component {
             seeking: false
         });
         this.seek(e)
-        this.writePending = true;
+        if (this.writePending && this.audioEl.duration) {
+            debugger;
+            this.writePending = false;
+            this.audioEl.currentTime = this.audioEl.duration * this.state.progress;
+        }
     }
 
     render() {
@@ -121,10 +127,6 @@ class Player extends React.Component {
         if (this.audioEl) {
             if (this.props.currentTrack) {
                 duration = this.audioEl.duration ? formatTime(this.audioEl.duration) : " ";
-                if (this.writePending && this.audioEl.duration) {
-                    this.writePending = false;
-                    this.audioEl.currentTime = this.audioEl.duration * this.state.progress;
-                }
             }
             if (this.state.seeking) {
                 currentTime = formatTime(this.audioEl.duration * this.state.progress)
@@ -152,7 +154,6 @@ class Player extends React.Component {
                             <div className='progress-bar-seek'
                                  ref={(ref) => this._barSeek  = ref}
                                  onMouseDown={this.startSeek}>
-
                             </div>
                             <div className={"progress-head " + (this.state.seeking ? 'playhead-show' : '')}
                                  style={{left: (this.state.progress * 100) + '%'}}>
