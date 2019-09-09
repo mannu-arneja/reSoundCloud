@@ -101,6 +101,8 @@ footer {
     opacity: 1;
 }
 
+/* VOLUME */
+
 .volume {
     position: relative;
     display: flex;

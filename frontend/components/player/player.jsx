@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {togglePause, updateTime} from '../../actions/track_actions'
+import Volume from './volume'
 
 class Player extends React.Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class Player extends React.Component {
             track_src: null,
             progress: 0,
             seeking: false,
+            volume: 100,
         }
 
         this.writePending = false;
@@ -80,6 +82,12 @@ class Player extends React.Component {
         if (this.props.paused) {
             this.handlePlay();
         }
+    }
+
+    handleVolChange(val) {
+        this.setState({
+            volume: val,
+        })
     }
 
     startSeek(e) {
@@ -160,12 +168,9 @@ class Player extends React.Component {
                             </div>
                         </div>
                         <span>{duration}</span>
-                        <div className='volume'>
-                            <button className='fas fa-volume-up'></button>
-                            <div className='volume-bar'></div>
-                            <div className='volume-bar-seek'></div>
-                            <div className='volume-bar-head'></div>
-                        </div>
+                        <Volume 
+                            onVolChange={this.handleVolChange}
+                        />
                     </div>
                 </section>
                 <audio 
