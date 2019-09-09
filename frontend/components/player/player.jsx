@@ -11,7 +11,7 @@ class Player extends React.Component {
             track_src: null,
             progress: 0,
             seeking: false,
-            volume: 100,
+            volume: 1,
         }
 
         this.writePending = false;
@@ -19,6 +19,7 @@ class Player extends React.Component {
         this.handlePlay = this.handlePlay.bind(this);
         this.handleTime = this.handleTime.bind(this);
         this.handleBack = this.handleBack.bind(this);
+        this.handleVolChange = this.handleVolChange.bind(this);
         this.startSeek = this.startSeek.bind(this);
         this.stopSeek = this.stopSeek.bind(this);
         this.seek = this.seek.bind(this);
@@ -85,6 +86,7 @@ class Player extends React.Component {
     }
 
     handleVolChange(val) {
+        
         this.setState({
             volume: val,
         })
@@ -112,7 +114,7 @@ class Player extends React.Component {
                 progress: progress
             });
             // this.writePending = true;
-            console.log(e.clientX - this._barSeek.offsetLeft)
+            // console.log(e.clientX - this._barSeek.offsetLeft)
         }
     }
     
@@ -122,7 +124,6 @@ class Player extends React.Component {
         });
         this.seek(e)
         if (this.writePending && this.audioEl.duration) {
-            debugger;
             this.writePending = false;
             this.audioEl.currentTime = this.audioEl.duration * this.state.progress;
         }
@@ -170,6 +171,7 @@ class Player extends React.Component {
                         <span>{duration}</span>
                         <Volume 
                             onVolChange={this.handleVolChange}
+                            val={this.state.volume}
                         />
                     </div>
                 </section>

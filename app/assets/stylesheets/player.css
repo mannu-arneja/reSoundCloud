@@ -103,15 +103,37 @@ footer {
 
 /* VOLUME */
 
-.volume {
+#volume {
     position: relative;
     display: flex;
     align-items: center;
 }
 
-.volume-bar {
+#volume-background {
     position: absolute;
-    background-color: grey;
-    height: 20px;
-    width: 8px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    height: 120px;
+    width: 30px;
+    bottom: 25px;
+    left: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1)
+}
+
+#volume-bar {
+    position: absolute;
+    background-color: #ccc;
+    bottom: 38px;
+    left: 11px;
+    height: 100px;
+    width: 2px;
+    margin-left: 14px;
+}
+
+#volume-bar-val {
+    background-color: #f50;
+    position: absolute;
+    width: 2px;
+    bottom: 0;
 }
