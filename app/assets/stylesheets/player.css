@@ -103,13 +103,14 @@ footer {
 
 /* VOLUME */
 
-#volume {
+.volume {
     position: relative;
     display: flex;
     align-items: center;
 }
 
-#volume button {
+.volume button {
+    font-size: 18px;
     padding: 18px 0px;
     width: 35px;
     margin: 0 0 0 0;
@@ -117,7 +118,7 @@ footer {
 }
 
 
-#volume-background {
+.volume-background {
     visibility: hidden;
     position: absolute;
     background-color: #f2f2f2;
@@ -132,13 +133,13 @@ footer {
 }
 
 
-#volume button:hover + #volume-background, #volume-background:hover {
+.vol-show, .volume button:hover + .volume-background, .volume-background:hover {
     height: 120px;
     visibility: visible;
 }
 
 
-#volume-bar {
+.volume-bar {
     position: absolute;
     background-color: #ccc;
     bottom: 50px;
@@ -154,19 +155,58 @@ footer {
     z-index: 2;
 }
 
-#volume button:hover ~ #volume-bar, #volume-background:hover + #volume-bar {
-    opacity: 1;
-    visibility: visible;
-}
 
-#volume-bar-val {
+
+.volume-bar-val {
     background-color: #f50;
     position: absolute;
     width: 2px;
     bottom: 0;
 }
 
-.vol-show {
+.volume-bar-area {
+    position: absolute;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+.volume-background::before, .volume-background::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-style: solid;
+}
+
+.volume-background::before {
+    margin-left: -7px;
+    border-width: 7px;
+    border-color: rgb(200, 200, 200) transparent transparent transparent;
+}
+
+.volume-background::after {
+    margin-left: -6px;
+    border-width: 6px;
+    border-color: rgb(240, 240, 240) transparent transparent transparent;
+}
+
+.volume-bar-head {
+    position: absolute;
+    border: 1px solid #f50;
+    border-radius: 100%;
+    height: 8px;
+    width: 8px;
+    background-color: #f50;
+    box-sizing: border-box;
+    opacity: inherit;
+    cursor: pointer;
+    transition: opacity 150ms;
+    margin-left: -3px;
+    margin-bottom: -4px;
+}
+
+.vol-bar-show, .volume button:hover ~ .volume-bar, .volume-background:hover + .volume-bar {
     opacity: 1;
     visibility: visible;
 }
