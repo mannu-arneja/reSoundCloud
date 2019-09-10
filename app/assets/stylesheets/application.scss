@@ -25,6 +25,10 @@ body {
   position: relative;
 }
 
+div:focus, button:focus {
+  outline: none;
+}
+
 .fixed {
   position: fixed;
 }

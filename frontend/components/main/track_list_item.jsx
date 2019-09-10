@@ -34,11 +34,13 @@ class TrackListItem extends React.Component {
         if (this.props.tracks) {
             const { id, title, author, imageUrl } = this.props.tracks[this.props.trackID];
             const { paused, currentTrack } = this.props
-            console.log(paused)
+            let show = currentTrack===id ? 'button-show' : '';
             let pauseStateClass = 'fas fa-play i-nudge'
             if (currentTrack) {
-                if (!paused && currentTrack===id) pauseStateClass = 'fas fa-pause';
-            }
+                if (!paused && currentTrack===id) {
+                    pauseStateClass = 'fas fa-pause';
+                }
+            };
             return (
                 <li className="track-list-item">
                     <Link to={`/tracks/${id}`} className="track-list-title">
@@ -48,7 +50,7 @@ class TrackListItem extends React.Component {
                     {title}
                     <p>{author}</p>
                     </Link>
-                    <div className='play-button' onClick={this.playTrack}>
+                    <div className={`play-button ${show}`} onClick={this.playTrack}>
                         <i className={pauseStateClass}></i>
                     </div>
                 </li>
