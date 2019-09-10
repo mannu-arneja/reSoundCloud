@@ -86,11 +86,10 @@ class Player extends React.Component {
     }
 
     handleVolChange(val) {
-        
         this.setState({
             volume: val,
-        })
-    }
+        }, () => this.audioEl.volume = this.state.volume)
+    };
 
     startSeek(e) {
         e.preventDefault();

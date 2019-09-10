@@ -4,7 +4,23 @@ class Volume extends React.Component {
     constructor(props) {
         super(props);
 
+        this.dragging = false;
+        this.open = false;
         this.handleVolChange = this.handleVolChange.bind(this)
+        this.startDrag = this.startDrag.bind(this)
+    }
+
+    posY(e) {
+        let val = 100 - (e.clientY - this._bar.getClientRects()[0].y)
+        if (val < 0) val = 0;
+        if (val > 100) val = 100;
+        return val;
+    }
+
+    startDrag(e) {
+        e.preventDefault();
+        this.dragging = true;
+        this.props.onVolChange(this.posY(e) / 100)
     }
 
     handleVolChange(e) {
@@ -21,7 +37,8 @@ class Volume extends React.Component {
             <div id='volume'>
                 <button className='fas fa-volume-up'></button>
                 <div id='volume-background'
-                    onMouseDown={this.handleVolChange}></div>
+                    onMouseDown={this.startDrag}>
+                </div>
                 <div id='volume-bar'
                     ref={(ref) => this._bar = ref}>
                     <div id='volume-bar-val'
