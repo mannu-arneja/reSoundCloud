@@ -5,8 +5,8 @@
 }
 
 .track-list-item {
-    position: relative;
-    margin: 20px;
+  position: relative;
+  margin: 20px;
 }
 
 .track-img {
@@ -14,10 +14,10 @@
 }
 
 .track-list-title {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    font-size: 18px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
 }
 .track-list-item p{
   color: darkslategray;
@@ -25,10 +25,10 @@
 }
 
 .track-list-img img{
-    width: 173px;
-    height: 173px;
-    background-image: linear-gradient(135deg,#846170,#70929c);
-    object-fit: cover;
+  width: 173px;
+  height: 173px;
+  background-image: linear-gradient(135deg,#846170,#70929c);
+  object-fit: cover;
 }
 
 .track-list-item:hover > .play-button {
@@ -36,17 +36,17 @@
 }
 
 .play-button {
-    position: absolute;
-    height: 56px;
-    width: 56px;
-    background-color: #f50;
-    border-radius: 50%;
-    top: 31%;
-    left: 37%;
-    cursor: pointer;
-    transition: opacity .1s;
-    opacity: 0;
-    z-index: 9;
+  position: absolute;
+  height: 56px;
+  width: 56px;
+  background-color: #f50;
+  border-radius: 50%;
+  top: 31%;
+  left: 37%;
+  cursor: pointer;
+  transition: opacity .1s;
+  opacity: 0;
+  z-index: 9;
 }
 
 .play-button:hover {
@@ -55,9 +55,13 @@
 }
 
 .play-button i {
-    position: absolute;
-    color: white;
-    font-size: 23px;
-    top: 28%;
-    left: 33%;
+  position: absolute;
+  color: white;
+  font-size: 23px;
+  top: 28%;
+  left: 33%;
+}
+
+.i-nudge {
+  padding-left: 2px;
 }

@@ -35,7 +35,7 @@ class TrackListItem extends React.Component {
             const { id, title, author, imageUrl } = this.props.tracks[this.props.trackID];
             const { paused, currentTrack } = this.props
             console.log(paused)
-            let pauseStateClass = 'fas fa-play'
+            let pauseStateClass = 'fas fa-play i-nudge'
             if (currentTrack) {
                 if (!paused && currentTrack===id) pauseStateClass = 'fas fa-pause';
             }
