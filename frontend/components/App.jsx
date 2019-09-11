@@ -19,7 +19,7 @@ const App = () => (
         </header>
         <Switch>
             <AuthRoute exact path="/" component={FrontContent} />
-            <ProtectedRoute path="/tracks" component={Main} />
+            <ProtectedRoute path="/discover" component={Main} />
             <ProtectedRoute path="/upload" component={UploadForm} />
         </Switch>
         <footer>

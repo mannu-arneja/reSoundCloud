@@ -16,7 +16,7 @@ function PreNav({openModal}){
             </div>
             <nav className="signin">
                 <button className="login-button" onClick={()=>{openModal('login')}}>Sign in</button>
-                <button className="signup-button" onClick={()=>openModal('signup')}>Create account</button>
+                <button className="create-button" onClick={()=>openModal('signup')}>Create account</button>
             </nav>
         </div>
     )

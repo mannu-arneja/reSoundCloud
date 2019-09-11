@@ -76,14 +76,21 @@ div:focus, button:focus {
 }
 
 .main-container {
-  position: relative;
-  padding-top: 50px;
   background: white;
-  height: 1000px;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main-container h1 {
-  font-size: 40px;
+  font-size: 21px;
   text-align: center;
-  padding: 15px 0px;
+  padding: 15px 0px 5px 0px;
+  letter-spacing: 0.04em;
+}
+
+.light-font {
+  font-family: "Interstate", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
+  font-weight: 100;
 }

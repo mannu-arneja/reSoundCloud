@@ -2,6 +2,7 @@
 .track-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .track-list-item {
