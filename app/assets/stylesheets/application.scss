@@ -95,6 +95,15 @@ div:focus, button:focus {
   font-weight: 100;
 }
 
+.main-font {
+  font: 12px/1.4 "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+}
 .main-container {
-  
+  padding: 100px 0px;
+  width: 900px;
+}
+
+.main-container h2{
+  padding: 5px 0px 0px 45px;
+  font-size: 23px;
 }

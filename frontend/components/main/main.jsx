@@ -12,6 +12,7 @@ class Main extends React.Component {
     render() {
         return(
             <div className="main-container">
+                <h2 className='main-font'>New Music Now</h2>
                 <TrackIndex />
             </div>
         )
