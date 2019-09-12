@@ -21,10 +21,11 @@ class TrackIndex extends React.Component {
                     <TrackListItem key={`track-${track.id}`} trackID={track.id}/>
                 )
             });
+
             return (
                 <ul className="track-list">
-                {trackList}
-            </ul>
+                    {trackList}
+                </ul>
             )
         }
     }

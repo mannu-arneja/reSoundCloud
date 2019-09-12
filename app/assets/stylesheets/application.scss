@@ -75,7 +75,7 @@ div:focus, button:focus {
   font-weight: 100;
 }
 
-.main-container {
+.front-tracks {
   background: white;
   padding: 50px 20px;
   display: flex;
@@ -83,7 +83,7 @@ div:focus, button:focus {
   align-items: center;
 }
 
-.main-container h1 {
+.front-tracks h1 {
   font-size: 21px;
   text-align: center;
   padding: 15px 0px 5px 0px;
@@ -93,4 +93,8 @@ div:focus, button:focus {
 .light-font {
   font-family: "Interstate", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
   font-weight: 100;
+}
+
+.main-container {
+  
 }

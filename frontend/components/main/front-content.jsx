@@ -14,7 +14,7 @@ function FrontContent(){
                     <button className="signup-button">Start uploading today</button>
                 </div>
             </div>
-            <div className="main-container">
+            <div className="front-tracks">
                 <h1 className='light-font'>Hear what’s trending for free in the reSoundCloud community</h1>
                 <TrackIndex />
             </div>

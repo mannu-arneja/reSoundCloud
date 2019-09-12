@@ -16,14 +16,14 @@ class NavBar extends React.Component {
             return (
                 <div className='banner'>
                     <div className="nav-left">
-                        <div className="logo orange">
+                        <div className="nav-logo">
                             <a href="/">
-                                <i className="fab fa-soundcloud fa-3x"></i>
+                                <i className="fab fa-soundcloud"></i>
                             </a>
                         </div>
                         <button className='nav-button' onClick={() => this.props.history.push("/")}>Home</button>
                         <button className='nav-button' onClick={() => this.props.history.push("/upload")}>Upload</button>
-                        <div className='nav-space'>space</div>
+                        <div className='nav-space'></div>
                         <div className="greet">
                             <h1>{currentUser.username}!</h1>
                             <button className="login-button" onClick={() => {logout(); this.props.history.push("/");}}>Log Out</button>

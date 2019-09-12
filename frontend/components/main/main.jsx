@@ -1,5 +1,6 @@
 import React from 'react';
 import TrackIndex from './track_index';
+import { connect } from 'react-redux';
 
 //'discover' and after logging in
 
@@ -11,8 +12,6 @@ class Main extends React.Component {
     render() {
         return(
             <div className="main-container">
-                <h1>--main--</h1>
-                <h1>Hear what’s trending for free in the reSoundCloud community</h1>
                 <TrackIndex />
             </div>
         )
@@ -22,4 +21,10 @@ class Main extends React.Component {
     
 };
 
-export default Main;
+const msp = (state) => {
+    return ({
+        currentUser: state.entities.users[state.session.id]
+    });
+};
+
+export default connect(msp)(Main);
