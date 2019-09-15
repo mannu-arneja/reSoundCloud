@@ -49,7 +49,6 @@ class Volume extends React.Component {
             this.dragVol(e)
             this.dragging = false
         }
-        console.log(this.props.val)
     }
 
     toggleMute() {

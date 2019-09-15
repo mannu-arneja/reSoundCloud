@@ -15,14 +15,18 @@ reSoundCloud, an echo of SoundCloud, is a platform to stream and share audio.
 https://resoundcloud.herokuapp.com
 
 ## Technologies
-- Frontend - ReactJS/Redux
-- Backend MVC - Ruby on Rails
+- Frontend - ReactJS, Redux, Webpack, SASS
+- Backend MVC - Ruby on Rails, JBuilder
 - Database - PostgreSQL
 - Cloud storage - AWS S3
 
 ## Features
-- User accounts are made and authenticated (using BCrypt), and persist through broswer refreshes.
-- Users can upload audio files with a title and description, these tracks are associated with the author who uploaded them and shared on a index 'discover' page for all users.
+- Audio Playback through the player component persists throughout inter-component navigation
+- Users can upload audio files with a title, image, and description. These tracks are associated with the author and shared on a index 'discover' page for all users.
+- User accounts are made and authenticated (using BCrypt), and persist through broswer refreshes via bootstrapping session.
+
+<!-- ![alt text](app/assets/images/frontHero.jpg) -->
 
 ## Future Features
-- Sound
+- Comment on tracks
+- Waveform display

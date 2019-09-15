@@ -106,8 +106,8 @@ class Player extends React.Component {
     seek(e) {
         if (this.state.seeking) {
             let progressPx = e.clientX - this._barSeek.offsetLeft;
-            if (progressPx < 0) return 0;
-            if (progressPx > 350) return 350;
+            if (progressPx < 0) progressPx = 0;
+            if (progressPx > 350) progressPx = 350;
             let progress = progressPx / this._barSeek.clientWidth
             this.setState({
                 progress: progress
@@ -139,7 +139,7 @@ class Player extends React.Component {
             if (this.state.seeking) {
                 currentTime = formatTime(this.audioEl.duration * this.state.progress)
             } else {
-                currentTime = this.props.currentTime ? formatTime(this.props.currentTime) : " ";
+                currentTime = this.props.currentTime ? formatTime(this.props.currentTime) : "0:00";
             }
         }
         return (
