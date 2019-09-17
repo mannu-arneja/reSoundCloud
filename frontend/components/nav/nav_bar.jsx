@@ -25,7 +25,7 @@ class NavBar extends React.Component {
                         <button className='nav-button' onClick={() => this.props.history.push("/upload")}>Upload</button>
                         <div className='nav-space'></div>
                         <div className="greet">
-                            <h1>{currentUser.username}!</h1>
+                            <button className='nav-button' onClick={() => this.props.history.push(`/user/${this.props.currentUser.id}`)}>{currentUser.username}</button>
                             <button className="login-button" onClick={() => {logout(); this.props.history.push("/");}}>Log Out</button>
                         </div>
                     </div>

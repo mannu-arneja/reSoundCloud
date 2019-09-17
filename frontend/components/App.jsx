@@ -10,6 +10,7 @@ import NavBar from './nav/nav_bar';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import UploadForm from './upload/upload_form';
 import Player from './player/player';
+import UserProfile from './user/user_profile'
 
 const App = () => (
     <>
@@ -21,6 +22,7 @@ const App = () => (
             <AuthRoute exact path="/" component={FrontContent} />
             <ProtectedRoute path="/discover" component={Main} />
             <ProtectedRoute path="/upload" component={UploadForm} />
+            <ProtectedRoute path="/user/:id" component={UserProfile} />
         </Switch>
         <footer>
             <Player />
