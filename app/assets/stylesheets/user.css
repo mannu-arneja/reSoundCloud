@@ -23,3 +23,24 @@
     background-color: rgba(0,0,0,.8);
     margin-top: 25px;
 }
+
+.profile-tabs {
+    border-bottom: 1px solid lightgrey;
+    font-size: 18px;
+    padding: 12px 0px;
+    margin: 0px 25px;
+}
+
+.profile-body {
+    display: flex;
+    margin: 0px 25px;
+}
+
+.profile-main {
+    width: 70%;
+    border-right: 1px solid lightgrey;
+}
+
+.profile-side {
+    width: 30%;
+}
