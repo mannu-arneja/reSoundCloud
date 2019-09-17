@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 
 class UserProfile extends React.Component {
     constructor(props){
@@ -6,16 +8,26 @@ class UserProfile extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
+        console.log(this.props.users[this.props.match.params.id])
     }
 
     render() {
+        const user = this.props.users[this.props.match.params.id];
         return(
             <div className="profile-container">
-                <h1>user profile test</h1>
+                <div className="profile-banner">
+                    <h3 className="profile-name">{user.username}</h3>
+                </div>
             </div>
         )
     }
 }
 
-export default UserProfile
+const msp = state => {
+    return ({
+        users: state.entities.users,
+        currentUser: state.session.id
+    });
+}
+
+export default connect(msp)(UserProfile)
