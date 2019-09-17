@@ -35,7 +35,7 @@
 }
 
 .nav-space {
-  width: 855px;
+  width: 748px;
 }
 
 .nav-logo {
@@ -125,7 +125,9 @@ nav.signin {
   color: rgba(240, 240, 240, 0.9);
   padding: 15px 15px;
   font-size: 15px;
-  border: 1px black;
+  border: none;
+  border-right: 1px solid black;
+  width: 104px;
   cursor: pointer;
 }
 

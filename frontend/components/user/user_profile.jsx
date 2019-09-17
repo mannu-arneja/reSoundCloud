@@ -18,6 +18,11 @@ class UserProfile extends React.Component {
                 <div className="profile-banner">
                     <h3 className="profile-name">{user.username}</h3>
                 </div>
+                <div className="profile-body">
+                    <div className="profile-tabs"></div>
+                    <div className='profile-main'></div>
+                    <div className='profile-side'></div>
+                </div>
             </div>
         )
     }
