@@ -46,10 +46,16 @@ class ProfileTrackItem extends React.Component {
                             <div className={`profile-play-button ${show}`} onClick={this.playTrack}>
                                 <i className={pauseStateClass}></i>
                             </div>
-                            <div className='profile-track-title'>{author}</div>
-                            <div className='profile-track-title'></div>{title}
+                            <div className='profile-track-info'>
+                                <div className='profile-track-author'>{author}</div>
+                                <div className='profile-track-title'>{title}</div>
+                            </div>
                         </div>
-
+                        <div className='profile-track-wave'></div>
+                        <div className='profile-track-controls'>
+                            <button>edit</button>
+                            <button>delete</button>
+                        </div>
                     </div>
                 </li>
             )

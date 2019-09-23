@@ -7,10 +7,22 @@ import ProfileTrackIndex from './profile_track_index';
 class UserProfile extends React.Component {
     constructor(props){
         super(props)
+
+        this.state = {
+            trackCount: 0,
+        };
+
+        this.handleTrackCountChange = this.handleTrackCountChange.bind(this);
     }
 
     componentDidMount() {
         console.log(this.props.users[this.props.match.params.id])
+    }
+
+    handleTrackCountChange(count) {
+        this.setState ({
+            trackCount: count
+        })
     }
 
     render() {
@@ -25,11 +37,14 @@ class UserProfile extends React.Component {
                 </div>
                 <div className="profile-body">
                     <div className='profile-main'>
-                        <ProfileTrackIndex user={user.id} />
+                        <ProfileTrackIndex 
+                            user={user.id} 
+                            onTrackCountChange={this.handleTrackCountChange}
+                        />
                     </div>
                     <div className='profile-side'>
                         <h4>Tracks</h4>
-                        <p>0</p>
+                        <p>{this.state.trackCount}</p>
                     </div>
                 </div>
             </div>

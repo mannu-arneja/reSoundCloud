@@ -7,6 +7,8 @@ import { fetchTracks } from '../../actions/track_actions';
 class ProfileTrackIndex extends React.Component {
     constructor(props) {
         super(props);
+
+        this.handleTrackCountChange = this.handleTrackCountChange.bind(this);
     };
 
     componentDidMount() {
@@ -16,6 +18,10 @@ class ProfileTrackIndex extends React.Component {
         }
     }
 
+    handleTrackCountChange(count) {
+        this.props.onTrackCountChange(count)
+    }
+
     render() {
         if (this.props.tracks) {
             let trackList = Object.values(this.props.tracks).filter(el => this.props.user ? el.author_id === this.props.user : el).map(track => {
@@ -23,6 +29,8 @@ class ProfileTrackIndex extends React.Component {
                     <ProfileTrackItem key={`track-${track.id}`} trackID={track.id} />
                 )
             });
+
+            this.handleTrackCountChange(trackList.length);
 
             return (
                 <ul className="profile-track-list">
