@@ -37,10 +37,56 @@
 }
 
 .profile-main {
-    width: 70%;
+    min-width: 860px;
     border-right: 1px solid lightgrey;
 }
 
 .profile-side {
-    width: 30%;
 }
+
+/* profile tracks */
+
+.profile-track-item {
+    position: relative;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-track-img img {
+    width: 160px;
+    height: 160px;
+    background-image: linear-gradient(135deg,#846170,#70929c);
+    border: 1px solid rgb(200,200,200);
+    object-fit: cover;
+}
+
+.profile-track-right {
+    padding-left: 15px;
+}
+
+.profile-track-header {
+    display: flex;
+
+}
+
+.profile-play-button {
+    height: 36px;
+    width: 36px;
+    background-color: #f50;
+    border-radius: 50%;
+    top: 25px;
+    cursor: pointer;
+    transition: opacity .1s;
+    /* opacity: 0; */
+    z-index: 9;
+}
+
+.profile-play-button i {
+    position: relative;
+    color: white;
+    font-size: 16px;
+    top: 28%;
+    left: 33%;
+}
+

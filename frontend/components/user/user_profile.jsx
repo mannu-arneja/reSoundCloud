@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ProfileTrackIndex from './profile_track_index';
+
 
 
 class UserProfile extends React.Component {
@@ -22,7 +24,9 @@ class UserProfile extends React.Component {
                     <ul>Tracks</ul>
                 </div>
                 <div className="profile-body">
-                    <div className='profile-main'>--main--</div>
+                    <div className='profile-main'>
+                        <ProfileTrackIndex user={user.id} />
+                    </div>
                     <div className='profile-side'>
                         <h4>Tracks</h4>
                         <p>0</p>

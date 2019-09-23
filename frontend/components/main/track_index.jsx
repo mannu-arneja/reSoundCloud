@@ -15,6 +15,7 @@ class TrackIndex extends React.Component {
     render() {
         
         if (this.props.tracks) {
+
             
             let trackList = Object.values(this.props.tracks).map(track => {
                 return  (
