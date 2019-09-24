@@ -12,8 +12,16 @@ class Main extends React.Component {
     render() {
         return(
             <div className="main-container">
-                <h2 className='main-font'>New Music Now</h2>
-                <TrackIndex />
+                <div className='main-body'>
+                    <h2 className='main-font'>New Music Now</h2>
+                    <TrackIndex />
+                </div>
+                <div className='main-side'>
+                    <div className='side-profiles light-font'>
+                        <i className="fas fa-user-friends"></i>
+                        Who to Follow
+                    </div>
+                </div>
             </div>
         )
     }
