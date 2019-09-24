@@ -3,7 +3,7 @@ footer {
     height: 48px;
     position: fixed;
     left: 0;
-    z-index: 10;
+    z-index: 9;
 }
 
 .player-section {
