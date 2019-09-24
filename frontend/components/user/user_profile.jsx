@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ProfileTrackIndex from './profile_track_index';
+import { fetchUser } from '../../actions/user_actions';
 
 
 
@@ -10,13 +11,17 @@ class UserProfile extends React.Component {
 
         this.state = {
             trackCount: 0,
+            fetched: false,
         };
 
         this.handleTrackCountChange = this.handleTrackCountChange.bind(this);
     }
 
     componentDidMount() {
-        console.log(this.props.users[this.props.match.params.id])
+        const userID = this.props.match.params.id
+        this.props.fetchUser(userID).then(() => this.setState({
+            fetched: true
+        }));
     }
 
     handleTrackCountChange(count) {
@@ -26,27 +31,42 @@ class UserProfile extends React.Component {
     }
 
     render() {
-        const user = this.props.users[this.props.match.params.id];
+        let user;
+        let trackList;
+        let profile;
+
+        if (this.state.fetched) {
+            user = this.props.users[this.props.match.params.id]
+
+            profile = 
+                <>
+                    <div className="profile-banner">
+                        <h3 className="profile-name">{user.username}</h3>
+                    </div>
+                    <div className="profile-tabs">
+                        <ul>Tracks</ul>
+                    </div>
+                    <div className="profile-body">
+                        <div className='profile-main'>
+                            <ProfileTrackIndex
+                                user={user.id}
+                                onTrackCountChange={this.handleTrackCountChange}
+                            />
+                        </div>
+                        <div className='profile-side'>
+                            <h4>Tracks</h4>
+                            <p>{this.state.trackCount}</p>
+                        </div>
+                    </div>
+                </>
+        } else {
+            profile = null;
+        }
+
+
         return(
             <div className="profile-container">
-                <div className="profile-banner">
-                    <h3 className="profile-name">{user.username}</h3>
-                </div>
-                <div className="profile-tabs">
-                    <ul>Tracks</ul>
-                </div>
-                <div className="profile-body">
-                    <div className='profile-main'>
-                        <ProfileTrackIndex 
-                            user={user.id} 
-                            onTrackCountChange={this.handleTrackCountChange}
-                        />
-                    </div>
-                    <div className='profile-side'>
-                        <h4>Tracks</h4>
-                        <p>{this.state.trackCount}</p>
-                    </div>
-                </div>
+                {profile}
             </div>
         )
     }
@@ -59,4 +79,10 @@ const msp = state => {
     });
 }
 
-export default connect(msp)(UserProfile)
+const mdp = dispatch => {
+    return ({
+        fetchUser: (id) => dispatch(fetchUser(id))
+    })
+};
+
+export default connect(msp,mdp)(UserProfile)

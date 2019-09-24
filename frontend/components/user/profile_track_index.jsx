@@ -18,6 +18,11 @@ class ProfileTrackIndex extends React.Component {
         }
     }
 
+    componentDidUpdate() {
+        const count = Object.values(this.props.tracks).filter(a => a.author_id===this.props.user).length
+        this.handleTrackCountChange(count);
+    }
+
     handleTrackCountChange(count) {
         this.props.onTrackCountChange(count)
     }
@@ -30,12 +35,15 @@ class ProfileTrackIndex extends React.Component {
                 )
             });
 
-            this.handleTrackCountChange(trackList.length);
 
             return (
                 <ul className="profile-track-list">
                     {trackList}
                 </ul>
+            )
+        } else {
+            return (
+                <div className='profile-empty'>No Tracks Uploaded</div>
             )
         }
     }
