@@ -11,6 +11,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import UploadForm from './upload/upload_form';
 import Player from './player/player';
 import UserProfile from './user/user_profile'
+import TrackPage from './track/track_page';
 
 const App = () => (
     <>
@@ -23,6 +24,7 @@ const App = () => (
             <ProtectedRoute path="/discover" component={Main} />
             <ProtectedRoute path="/upload" component={UploadForm} />
             <ProtectedRoute path="/user/:id" component={UserProfile} />
+            <ProtectedRoute path="/track/:id" component={TrackPage} />
         </Switch>
         <footer>
             <Player />

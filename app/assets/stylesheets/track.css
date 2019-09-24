@@ -70,3 +70,11 @@
 .button-show {
   opacity: 1;
 }
+
+/* Track Page */
+
+.trackpage-container {
+  padding: 50px 0px;
+  height: 800px;
+  background-color: white;
+}

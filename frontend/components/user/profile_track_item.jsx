@@ -37,7 +37,7 @@ class ProfileTrackItem extends React.Component {
             return (
                 <li className="profile-track-item">
                     <div className="profile-track-img">
-                        <Link to={`/tracks/${id}`}>
+                        <Link to={`/track/${id}`}>
                             <img src={imageUrl}/>
                         </Link>
                     </div>

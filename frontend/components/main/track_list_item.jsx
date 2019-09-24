@@ -43,7 +43,7 @@ class TrackListItem extends React.Component {
             };
             return (
                 <li className="track-list-item">
-                    <Link to={`/tracks/${id}`} className="track-list-title">
+                    <Link to={`/track/${id}`} className="track-list-title">
                     <div className="track-list-img">
                         <img src={imageUrl}/>
                     </div>
