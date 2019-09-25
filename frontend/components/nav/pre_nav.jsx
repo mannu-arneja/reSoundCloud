@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function PreNav({openModal}){
+function PreNav({openModal, currentUser}){
 
-    // let $modal = document.querySelectorAll('.modal-child');
-    // function animate($modal) {
-    //     $modal.classList.toggle('animate');
-    // }
+    console.log(currentUser);
+    
 
     return (
         <div className='banner-splash'>
@@ -15,7 +13,7 @@ function PreNav({openModal}){
                 <h1>reSOUNDCLOUD</h1>
             </div>
             <nav className="signin">
-                <button className="login-button" onClick={()=>{openModal('login')}}>Sign in</button>
+                <button className="login-button" onClick={()=>openModal('login')}>Sign in</button>
                 <button className="create-button" onClick={()=>openModal('signup')}>Create account</button>
             </nav>
         </div>

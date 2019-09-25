@@ -1,9 +1,11 @@
 import React from 'react';
 import TrackIndex from './track_index';
+import PreNavContainer from '../nav/pre_nav_container';
 
 function FrontContent(){
     return(
         <>
+            <PreNavContainer />
             <div className="frontHero-container">
                 <div className="frontHero-content">
                     <h2>What's next in music is first on reSoundCloud</h2>

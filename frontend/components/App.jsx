@@ -17,14 +17,14 @@ const App = () => (
     <>
         <header className='header-container'>
             <Modal />
-            <Route path="/" component={NavBar} />
+            <Route path="/:sub" component={NavBar} />
         </header>
         <Switch>
             <AuthRoute exact path="/" component={FrontContent} />
             <ProtectedRoute path="/discover" component={Main} />
             <ProtectedRoute path="/upload" component={UploadForm} />
-            <ProtectedRoute path="/user/:id" component={UserProfile} />
-            <ProtectedRoute path="/track/:id" component={TrackPage} />
+            <Route path="/user/:id" component={UserProfile} />
+            <Route path="/track/:id" component={TrackPage} />
         </Switch>
         <footer>
             <Player />
