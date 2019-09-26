@@ -94,6 +94,9 @@
   // margin-right: 100px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  margin-left: 722px;
+  width: 233px;
 }
 .greet h1{
   margin-right: 10px;
@@ -112,6 +115,7 @@ nav.signin {
   font-size: 15px;
   border-radius: 4px;
   border-color: rgba(255, 255, 255, 0.865);
+  border: 1px solid #999;
   cursor: pointer;
 }
 

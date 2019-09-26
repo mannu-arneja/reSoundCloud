@@ -10,7 +10,7 @@ class NavBar extends React.Component {
     };
 
     render() {
-        let { currentUser, logout } = this.props;
+        let { currentUser, logout, openModal } = this.props;
         let greet;
         if (currentUser) {
             greet = 
@@ -37,7 +37,6 @@ class NavBar extends React.Component {
                     </div>
                     <button className='nav-button' onClick={() => this.props.history.push("/")}>Home</button>
                     <button className='nav-button' onClick={() => this.props.history.push("/upload")}>Upload</button>
-                    <div className='nav-space'></div>
                     <div className="greet">
                         {greet}
                     </div>

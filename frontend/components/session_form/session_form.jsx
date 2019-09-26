@@ -66,6 +66,7 @@ class SessionForm extends React.Component {
     loginForm() {
 
         return (
+            <>
             < form onSubmit = { this.handleSubmit } className = "login-form" >
                 <label>
                 <input type="text"
@@ -88,6 +89,7 @@ class SessionForm extends React.Component {
                 {this.showErrors()}
                 <input type="submit" value="Continue" className="signup-button" />
             </form >
+            </>
         )
     }
 
@@ -146,14 +148,6 @@ class SessionForm extends React.Component {
 
 
     render() {
-        // debugger
-        // if (this.props.formType === 'signup'){
-        //     return (this.preForm());
-        // } else {
-        //     return (this.fullForm());
-        // }
-
-
         switch (this.props.formType) {
             case 'email':
                 return (this.preForm());
