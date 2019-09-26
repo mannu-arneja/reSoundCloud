@@ -56,115 +56,63 @@ class SessionForm extends React.Component {
 
 
     render() {
-        const signupForm = 
-        <>
-            < form onSubmit = { this.handleSubmit } className = "signup-form" >
-            <label>
-            <input type="text"
-                value={this.state.username}
-                onChange={this.handleUpdate('username')}
-                className="login-field"
-                placeholder="Your display name *"
-            />
-            </label >
-            <br/>
-            <label>
-            <input type="text"
-                value={this.state.email}
-                onChange={this.handleUpdate('email')}
-                className="login-field"
-                placeholder="Your email address *"
-            />
-            </label >
-            <br/>
-            <label>
-                <input type="password"
-                value={this.state.password}
-                onChange={this.handleUpdate('password')}
-                className="login-field"
-                placeholder="Your password *"
-            />
-            </label>
-            <br/>
-            {this.showErrors()}
-            <input type="submit" value="Continue" className="signup-button" />
-            </form >
-        </>
 
-        const loginForm =
-        <>
-            < form onSubmit = { this.handleSubmit } className = "login-form" >
-                <label>
-                <input type="text"
-                    value={this.state.email}
-                    onChange={this.handleUpdate('email')}
-                    className="login-field"
-                    placeholder="Your email address *"
-                />
-                </label >
-                <br/>
-                <label>
-                    <input type="password"
-                    value={this.state.password}
-                    onChange={this.handleUpdate('password')}
-                    className="login-field"
-                    placeholder="Your password *"
-                />
-                </label>
-                <br/>
-                {this.showErrors()}
-                <input type="submit" value="Continue" className="signup-button" />
-            </form >
-        </>
-
-        // switch (this.props.formType) {
-        //     case 'login':
-        //         return loginForm;
-        //     case 'signup':
-        //         return signupForm;
-        //     default:
-        //         return null;
-        // }
         let inputUsername = null;
         if (this.props.formType === 'signup') {
             inputUsername = 
                 <input type="text"
-                value={this.state.username}
-                onChange={this.handleUpdate('username')}
-                className="login-field"
-                placeholder="Your display name *"
+                    value={this.state.username}
+                    onChange={this.handleUpdate('username')}
+                    className="login-field"
+                    placeholder="Your display name *"
                 />
         }
 
+        let showErrors = null;
+        if (this.props.errors) {
+            showErrors = 
+                <div>
+                    {this.props.errors.map((err, i) => (
+                        <p key={`error-${i}`} className="errorText">{err}</p>
+                    ))}
+                </div>
+        }
+
         return (
-        <>
-            < form onSubmit = { this.handleSubmit } className = "signup-form" >
-            <label>
-                {inputUsername}
-            </label >
-            <br/>
-            <label>
-            <input type="text"
-                value={this.state.email}
-                onChange={this.handleUpdate('email')}
-                className="login-field"
-                placeholder="Your email address *"
-            />
-            </label >
-            <br/>
-            <label>
-                <input type="password"
-                value={this.state.password}
-                onChange={this.handleUpdate('password')}
-                className="login-field"
-                placeholder="Your password *"
-            />
-            </label>
-            <br/>
-            {this.showErrors()}
-            <input type="submit" value="Continue" className="signup-button" />
-            </form >
-        </>
+            <>
+
+                <div className="modal-child" onClick={e => e.stopPropagation()}>
+                    <button className="demo-button" onClick={() => this.props.login({ email: "demo@nyc.edu", password: "hunter2" })}>
+                        Login as Guest
+                </button>
+                    <h1 className="form-divide">or</h1>
+
+                    <form onSubmit={this.handleSubmit} className="signup-form" >
+                        <label>
+                            {inputUsername}
+                        </label>
+                        <label>
+                            <input type="text"
+                                value={this.state.email}
+                                onChange={this.handleUpdate('email')}
+                                className="login-field"
+                                placeholder="Your email address *"
+                            />
+                        </label>
+                        <label>
+                            <input type="password"
+                                value={this.state.password}
+                                onChange={this.handleUpdate('password')}
+                                className="login-field"
+                                placeholder="Your password *"
+                            />
+                        </label>
+                        {showErrors}
+                        <input type="submit" value="Continue" className="signup-button" />
+                    </form >
+
+                </div>
+            </>
         )
     }
 

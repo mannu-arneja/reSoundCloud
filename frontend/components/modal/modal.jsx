@@ -29,13 +29,7 @@ function Modal({ modal, closeModal, login }) {
     return (
         <div className="modal-background" onClick={closeModal}>
             <i className="fas fa-times"></i>
-            <div className="modal-child" onClick={e => e.stopPropagation()}>
-                <button className="demo-button" onClick={() => login({email:"demo@nyc.edu", password:"hunter2"})}>
-                    Login as Guest
-                </button>
-                <h1 className="form-divide">or</h1>
-                {component}
-            </div>
+            {component}
         </div>
     );
 }

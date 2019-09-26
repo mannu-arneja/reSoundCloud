@@ -69,7 +69,6 @@ class UploadForm extends React.Component {
     }
 
     render() {
-        console.log(this.state);
         let preview = this.state.imageUrl ? <img src={this.state.imageUrl}></img> : null;
         return(
             <div className="upload-container">

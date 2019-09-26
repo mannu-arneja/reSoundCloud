@@ -24,6 +24,12 @@ class Api::TracksController < ApplicationController
     end
 
     def destroy
+        @track = Track.find_by(id: params[:id])
+        if @track 
+            @track.destroy
+        else
+            render json: @track.errors.full_messages, status: 401
+        end
     end
 
     def track_params
