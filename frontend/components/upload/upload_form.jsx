@@ -36,7 +36,7 @@ class UploadForm extends React.Component {
         if (this.state.imageFile) {
             formData.append('track[image]', this.state.imageFile);
         }
-        this.props.upload(formData).then(this.props.history.push('/tracks'))
+        this.props.upload(formData).then(this.props.history.push(`/user/${this.props.currentUser.id}`))
     }
     
     handleAudioFile(e) {

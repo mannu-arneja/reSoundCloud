@@ -6,6 +6,7 @@ export const RECEIVE_TRACK_ERRORS = 'RECEIVE_TRACK_ERRORS';
 export const RECEIVE_CURRENT_TRACK = 'RECEIVE_CURRENT_TRACK';
 export const PAUSED = 'PAUSED';
 export const UPDATE_TIME = 'UPDATE_TIME';
+export const REMOVE_TRACK = 'REMOVE_TRACK';
 
 export const receiveTrack = (track) => {
     return ({
@@ -38,6 +39,13 @@ export const updateTime = (time) => ({
     time
 })
 
+export const removeTrack = id => ({
+    type: REMOVE_TRACK,
+    id
+})
+
+// thunk
+
 export const fetchTrack = (id) => dispatch => {
     return (
         APIUtil.fetchTrack(id).then((track) => dispatch(receiveTrack(track)),
@@ -57,6 +65,13 @@ export const fetchTracks = () => dispatch => {
 export const uploadTrack = track => dispatch => {
     return (
         APIUtil.uploadTrack(track).then(track => dispatch(receiveTrack(track)),
+        err => dispatch(receiveTrackErrors(err)))
+    );
+};
+
+export const deleteTrack = id => dispatch => {
+    return (
+        APIUtil.deleteTrack(id).then(id => dispatch(removeTrack(id)),
         err => dispatch(receiveTrackErrors(err)))
     );
 };

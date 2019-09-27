@@ -1,5 +1,5 @@
-import { merge } from 'lodash';
-import { RECEIVE_TRACK, RECEIVE_TRACKS } from '../actions/track_actions';
+import { merge, omit } from 'lodash';
+import { RECEIVE_TRACK, RECEIVE_TRACKS, REMOVE_TRACK } from '../actions/track_actions';
 
 const tracksReducer = (oldState = [], action) => {
 
@@ -9,6 +9,8 @@ const tracksReducer = (oldState = [], action) => {
             return merge({}, oldState, action.track);
         case RECEIVE_TRACKS:
             return action.tracks;
+        case REMOVE_TRACK:
+            return omit(oldState, action.id);
         default:
             return oldState;
     }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { closeModal, openModal } from '../../actions/modal_actions';
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -11,6 +10,7 @@ class SessionForm extends React.Component {
         };
         
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemo = this.handleDemo.bind(this);
         this.showErrors = this.showErrors.bind(this);
         // this.handleContinue = this.handleContinue.bind(this);
         // this.continue = this.continue.bind(this);
@@ -23,8 +23,13 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user)
+        this.props.processForm(user).then(() => this.props.closeModal())
     };
+
+    handleDemo() {
+        this.props.login({ email: "demo@nyc.edu", password: "hunter2" })
+            .then(() => this.props.closeModal());
+    }
 
     showErrors() {
 
@@ -82,7 +87,7 @@ class SessionForm extends React.Component {
             <>
 
                 <div className="modal-child" onClick={e => e.stopPropagation()}>
-                    <button className="demo-button" onClick={() => this.props.login({ email: "demo@nyc.edu", password: "hunter2" })}>
+                    <button className="demo-button" onClick={() => this.handleDemo()}>
                         Login as Guest
                 </button>
                     <h1 className="form-divide">or</h1>

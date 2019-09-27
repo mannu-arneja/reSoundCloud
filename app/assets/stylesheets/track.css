@@ -74,8 +74,41 @@
 /* MODAL */
 
 .delete-warning {
-  height: 150px;
-  width: 220px;
+  height: 200px;
+  width: 300px;
+}
+
+.delete-box {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid lightgrey;
+  margin: 20px 20px 0px 20px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.delete-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 0px;
+  margin-left: 80px;
+  align-items: baseline;
+}
+
+.delete-buttons * {
+  cursor: pointer;
+}
+
+.delete-buttons button {
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  background-color: transparent;
+  color: black;
+  padding: 4px;
+}
+
+.delete-buttons button:hover {
+  border-color: grey;
 }
 
 /* Track Page */

@@ -7,7 +7,7 @@ import SignupFormContainer from '../session_form/signup_form_container';
 import EmailFormContainer from '../session_form/email_form_container';
 import DeleteTrackModal from '../track/delete_track_modal';
 
-function Modal({ modal, closeModal, login }) {
+function Modal({ modal, closeModal }) {
     if (!modal) {
         return null;
     }
@@ -40,7 +40,7 @@ function Modal({ modal, closeModal, login }) {
 
 const mapStateToProps = state => {
     return {
-        modal: state.ui.modal
+        modal: state.ui.modal.modalType
     };
 };
 
