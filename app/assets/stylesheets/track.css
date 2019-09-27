@@ -71,6 +71,13 @@
   opacity: 1;
 }
 
+/* MODAL */
+
+.delete-warning {
+  height: 150px;
+  width: 220px;
+}
+
 /* Track Page */
 
 .trackpage-container {
@@ -78,3 +85,4 @@
   height: 800px;
   background-color: white;
 }
+

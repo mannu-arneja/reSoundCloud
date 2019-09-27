@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
 import EmailFormContainer from '../session_form/email_form_container';
+import DeleteTrackModal from '../track/delete_track_modal';
 
 function Modal({ modal, closeModal, login }) {
     if (!modal) {
@@ -21,6 +22,9 @@ function Modal({ modal, closeModal, login }) {
             break;
         case 'signup':
             component = <SignupFormContainer />;
+            break;
+        case 'deleteTrack':
+            component = <DeleteTrackModal />;
             break;
         default:
             component = null;

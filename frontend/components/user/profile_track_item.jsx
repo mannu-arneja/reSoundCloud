@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { receiveCurrentTrack, togglePause } from '../../actions/track_actions';
+import { openModal } from '../../actions/modal_actions';
 
 class ProfileTrackItem extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class ProfileTrackItem extends React.Component {
     render() {
         if (this.props.tracks) {
             const { id, title, author, imageUrl } = this.props.tracks[this.props.trackID];
-            const { paused, currentTrack } = this.props
+            const { paused, currentTrack, openModal } = this.props
             let show = currentTrack===id ? 'button-show' : '';
             let pauseStateClass = 'fas fa-play i-nudge'
             if (currentTrack) {
@@ -54,7 +55,7 @@ class ProfileTrackItem extends React.Component {
                         <div className='profile-track-wave'></div>
                         <div className='profile-track-controls'>
                             <button>edit</button>
-                            <button>delete</button>
+                            <button onClick={() => openModal('deleteTrack')}>delete</button>
                         </div>
                     </div>
                 </li>
@@ -77,7 +78,8 @@ const mdp = dispatch => {
 
     return ({
         receiveCurrentTrack: (id) => dispatch(receiveCurrentTrack(id)),
-        togglePause: () => dispatch(togglePause())
+        togglePause: () => dispatch(togglePause()),
+        openModal: mode => dispatch(openModal(mode)),
     });
 };
 
