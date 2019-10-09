@@ -9,7 +9,7 @@ const sessionReducer = (state={id:null}, action) => {
         case RECEIVE_CURRENT_EMAIL:
             return merge({}, state, {email: action.user.email})
         case RECEIVE_CURRENT_USER:
-            return merge({}, state, {id: Object.keys(action.user)});
+            return merge({}, state, {id: Number(Object.keys(action.user))});
         case LOGOUT_CURRENT_USER:
             return merge({}, state, { id: null});
         default:

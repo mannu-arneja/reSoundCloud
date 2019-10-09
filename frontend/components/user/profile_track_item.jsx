@@ -26,8 +26,8 @@ class ProfileTrackItem extends React.Component {
 
     render() {
         if (this.props.tracks) {
-            const { id, title, author, imageUrl } = this.props.tracks[this.props.trackID];
-            const { paused, currentTrack, openModal } = this.props
+            const { id, title, author, author_id, imageUrl } = this.props.tracks[this.props.trackID];
+            const { paused, currentTrack, currentUser, openModal } = this.props
             let show = currentTrack===id ? 'button-show' : '';
             let pauseStateClass = 'fas fa-play i-nudge'
             if (currentTrack) {
@@ -35,6 +35,15 @@ class ProfileTrackItem extends React.Component {
                     pauseStateClass = 'fas fa-pause';
                 }
             };
+
+            let trackAdmin = null;
+            if (author_id === currentUser) {
+                trackAdmin = 
+                    <div className='profile-track-controls'>
+                        <button>edit</button>
+                        <button onClick={() => openModal('deleteTrack', id)}>delete</button>
+                    </div>
+            }
             return (
                 <li className="profile-track-item">
                     <div className="profile-track-img">
@@ -53,10 +62,7 @@ class ProfileTrackItem extends React.Component {
                             </div>
                         </div>
                         <div className='profile-track-wave'></div>
-                        <div className='profile-track-controls'>
-                            <button>edit</button>
-                            <button onClick={() => openModal('deleteTrack', id)}>delete</button>
-                        </div>
+                        {trackAdmin}
                     </div>
                 </li>
             )
@@ -70,7 +76,8 @@ const msp = state => {
     return ({
         tracks: state.entities.tracks,
         paused: state.ui.player.paused,
-        currentTrack: state.ui.player.track
+        currentTrack: state.ui.player.track,
+        currentUser: state.session.id
     });
 };
 

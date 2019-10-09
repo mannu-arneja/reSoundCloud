@@ -32,7 +32,7 @@ class TrackListItem extends React.Component {
 
     render() {
         if (this.props.tracks) {
-            const { id, title, author, imageUrl } = this.props.tracks[this.props.trackID];
+            const { id, title, author, author_id, imageUrl } = this.props.tracks[this.props.trackID];
             const { paused, currentTrack } = this.props
             let show = currentTrack===id ? 'button-show' : '';
             let pauseStateClass = 'fas fa-play i-nudge'
@@ -48,7 +48,9 @@ class TrackListItem extends React.Component {
                         <img src={imageUrl}/>
                     </div>
                     {title}
-                    <p>{author}</p>
+                    </Link>
+                    <Link to={`/user/${author_id}`}>
+                        <p>{author}</p>
                     </Link>
                     <div className={`play-button ${show}`} onClick={this.playTrack}>
                         <i className={pauseStateClass}></i>

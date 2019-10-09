@@ -32,7 +32,6 @@ class UserProfile extends React.Component {
 
     render() {
         let user;
-        let trackList;
         let profile;
 
         if (this.state.fetched) {
@@ -75,7 +74,6 @@ class UserProfile extends React.Component {
 const msp = state => {
     return ({
         users: state.entities.users,
-        currentUser: state.session.id
     });
 }
 
