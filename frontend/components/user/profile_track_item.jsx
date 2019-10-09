@@ -55,7 +55,7 @@ class ProfileTrackItem extends React.Component {
                         <div className='profile-track-wave'></div>
                         <div className='profile-track-controls'>
                             <button>edit</button>
-                            <button onClick={() => openModal('deleteTrack')}>delete</button>
+                            <button onClick={() => openModal('deleteTrack', id)}>delete</button>
                         </div>
                     </div>
                 </li>
@@ -79,7 +79,7 @@ const mdp = dispatch => {
     return ({
         receiveCurrentTrack: (id) => dispatch(receiveCurrentTrack(id)),
         togglePause: () => dispatch(togglePause()),
-        openModal: mode => dispatch(openModal(mode)),
+        openModal: (mode, props) => dispatch(openModal(mode, props)),
     });
 };
 

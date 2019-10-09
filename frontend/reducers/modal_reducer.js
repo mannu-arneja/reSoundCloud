@@ -16,7 +16,7 @@ const modalReducer = (state=_init, action) =>{
     switch (action.type) {
         case OPEN_MODAL:
             newState.modalType = action.modal;
-            newState.modalProps = action.modalProps;
+            newState.modalProps = action.props;
             return newState;
         case CLOSE_MODAL:
             newState.modalType = null;

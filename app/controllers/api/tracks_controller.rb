@@ -27,8 +27,9 @@ class Api::TracksController < ApplicationController
         @track = Track.find_by(id: params[:id])
         if @track 
             @track.destroy
+            render json: @track.id
         else
-            render json: @track.errors.full_messages, status: 401
+            render json: ['No such track'], status: 401
         end
     end
 
