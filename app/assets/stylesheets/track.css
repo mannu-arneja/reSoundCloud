@@ -8,6 +8,8 @@
 .track-list-item {
   position: relative;
   margin: 20px;
+  width: 173px;
+  overflow: hidden;
 }
 
 .track-img {
@@ -18,11 +20,12 @@
   text-decoration: none;
   color: #454545;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
 }
 .track-list-item p{
   color: darkslategray;
-  font-size: 17px;
+  font-size: 12px;
+  padding-top: 3px;
 }
 
 .track-list-img img{

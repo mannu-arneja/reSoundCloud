@@ -31,9 +31,7 @@ class NavBar extends React.Component {
             <div className='banner'>
                 <div className="nav-container">
                     <div className="nav-logo">
-                        <a href="/">
-                            <i className="fab fa-soundcloud"></i>
-                        </a>
+                        <i className="fab fa-soundcloud"></i>
                     </div>
                     <button className='nav-button' onClick={() => this.props.history.push("/")}>Home</button>
                     <button className='nav-button' onClick={() => this.props.history.push("/upload")}>Upload</button>
