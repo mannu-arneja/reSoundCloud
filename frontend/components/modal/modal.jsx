@@ -6,6 +6,7 @@ import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
 import EmailFormContainer from '../session_form/email_form_container';
 import DeleteTrackModal from '../track/delete_track_modal';
+import EditTrackModal from '../track/edit_track_modal';
 
 function Modal({ modal, closeModal }) {
     if (!modal) {
@@ -25,6 +26,9 @@ function Modal({ modal, closeModal }) {
             break;
         case 'deleteTrack':
             component = <DeleteTrackModal />;
+            break;
+        case 'editTrack':
+            component = <EditTrackModal />;
             break;
         default:
             component = null;

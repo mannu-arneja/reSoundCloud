@@ -94,22 +94,24 @@ class UploadForm extends React.Component {
                                 </div>
                             </div>
                             <div className="up-form-right">
-                                <label >Title *
+                                <div>
+                                    <label>Title <span className="red">*</span></label>
                                     <input type="text"
                                         value={this.state.title}
                                         onChange={this.handleUpdate('title')}
                                         className="upForm-title"
                                         placeholder="Name your track" // import file name
                                     />
-                                </label>
-                                <label >Description
+                                </div>
+                                <div>
+                                    <label >Description</label>
                                     <textarea
                                         value={this.state.desc}
                                         onChange={this.handleUpdate('desc')}
                                         className="upForm-desc"
                                         placeholder="Describe your track"
                                     />
-                                </label>
+                                </div>
                                 <input type="submit"
                                     value="Save"
                                     className="up-form-button"

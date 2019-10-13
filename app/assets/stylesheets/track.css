@@ -16,7 +16,7 @@
 
 .track-list-title {
   text-decoration: none;
-  color: black;
+  color: #454545;
   font-weight: bold;
   font-size: 18px;
 }
@@ -34,6 +34,10 @@
 
 .track-list-item:hover > .play-button {
   opacity: 1;
+}
+
+.track-list a:hover, .track-list p:hover{
+  color: black;
 }
 
 .play-button {
@@ -71,7 +75,7 @@
   opacity: 1;
 }
 
-/* MODAL */
+/* MODAL - Delete */
 
 .delete-warning {
   height: 200px;
@@ -109,6 +113,23 @@
 
 .delete-buttons button:hover {
   border-color: grey;
+}
+
+/* MODAL - Edit */
+
+.edit-form-container {
+  width: 100%;
+  visibility: visible;
+}
+
+.edit-form-container form {
+  width: inherit;
+}
+
+.edit-form {
+  display: flex;
+  align-items: inherit;
+  justify-content: space-around;
 }
 
 /* Track Page */

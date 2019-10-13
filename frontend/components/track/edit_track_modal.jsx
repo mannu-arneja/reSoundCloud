@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateTrack } from '../../actions/track_actions';
 import { withRouter } from 'react-router-dom';
+import { closeModal } from '../../actions/modal_actions';
 
-class UpdateTrackModal extends React.Component {
+class EditTrackModal extends React.Component {
     constructor(props) {
         super(props)
 
@@ -15,10 +16,10 @@ class UpdateTrackModal extends React.Component {
             imageFile: imageFile || null,
             imageUrl: imageUrl || null,
         }
+
         this.nextForm = React.createRef();
         this.imgPrev = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleAudioFile = this.handleAudioFile.bind(this);
         this.handleImgFile = this.handleImgFile.bind(this);
     }
 
@@ -38,7 +39,7 @@ class UpdateTrackModal extends React.Component {
         if (this.state.imageFile) {
             formData.append('track[image]', this.state.imageFile);
         }
-        this.props.upload(formData).then(this.props.history.push(`/user/${this.props.currentUser.id}`))
+        this.props.update(this.props.track.id, formData).then(this.props.closeModal());
     }
 
     // handleAudioFile(e) {
@@ -74,12 +75,12 @@ class UpdateTrackModal extends React.Component {
         let preview = this.state.imageUrl ? <img src={this.state.imageUrl}></img> : null;
         return (
 
-            <div className='modal-child edit-form'>
+            <div className='modal-child up-form light-font' onClick={e => e.stopPropagation()}>
 
-                <div className="up-form">
+                <div className="edit-form-container">
                     <form onSubmit={this.handleSubmit}>
-                        
-                        <div className="up-form-next" ref={this.nextForm} >
+
+                        <div className="edit-form" ref={this.nextForm} >
                             <div className="up-form-img" ref={this.imgPrev}>
                                 {preview}
                                 <div className="up-form-img-button">
@@ -91,22 +92,24 @@ class UpdateTrackModal extends React.Component {
                                 </div>
                             </div>
                             <div className="up-form-right">
-                                <label >Title *
+                                <div>
+                                    <label>Title <span className="red">*</span></label>
                                     <input type="text"
                                         value={this.state.title}
                                         onChange={this.handleUpdate('title')}
                                         className="upForm-title"
                                         placeholder="Name your track" // import file name
                                     />
-                                </label>
-                                <label >Description
+                                </div>
+                                <div>
+                                    <label >Description</label>
                                     <textarea
                                         value={this.state.desc}
                                         onChange={this.handleUpdate('desc')}
                                         className="upForm-desc"
                                         placeholder="Describe your track"
                                     />
-                                </label>
+                                </div>
                                 <input type="submit"
                                     value="Save"
                                     className="up-form-button"
@@ -130,10 +133,9 @@ const msp = (state) => {
     });
 };
 
-const mdp = dispatch => {
-    return ({
-        update: (id, track) => dispatch(updateTrack(id, track))
-    })
-}
+const mdp = dispatch => ({
+    update: (id, track) => dispatch(updateTrack(id, track)),
+    closeModal: () => dispatch(closeModal())
+})
 
-export default withRouter(connect(msp, mdp)(UpdateTrackModal))
+export default withRouter(connect(msp, mdp)(EditTrackModal))

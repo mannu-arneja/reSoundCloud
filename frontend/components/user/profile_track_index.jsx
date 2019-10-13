@@ -12,7 +12,7 @@ class ProfileTrackIndex extends React.Component {
     };
 
     componentDidMount() {
-        console.log(this.props.tracks.length ? 'yes' : 'no');
+        // console.log(this.props.tracks.length ? 'yes' : 'no');
         if (!this.props.tracks.length) {
             this.props.fetchTracks();
         }

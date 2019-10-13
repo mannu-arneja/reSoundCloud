@@ -61,11 +61,19 @@
     
 }
 
-.up-form-right > *{
+.up-form-right > div{
     display: flex;
     flex-direction: column;
     width: 250px;
     align-items: normal;
+}
+
+.up-form-right label {
+    margin-bottom: 5px;
+}
+
+.up-form-right input {
+    padding: 2px 2px;
 }
 
 .up-form-img {

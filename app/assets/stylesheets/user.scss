@@ -70,11 +70,13 @@
 
 .profile-track-right {
     padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .profile-track-header {
     display: flex;
-    padding-bottom: 20px;
 }
 
 .profile-play-button {
@@ -121,4 +123,20 @@
     height: 65px;
     background-image: image_url('waveform.png');
     background-size: contain;
+}
+
+.profile-track-controls button{
+    padding: 4px 10px;
+    background-color: transparent;
+    border-radius: 4px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.profile-track-controls i{
+    margin-right: 3px;
+}
+
+.profile-track-controls button:hover {
+    border-color: rgb(99, 99, 99);
 }

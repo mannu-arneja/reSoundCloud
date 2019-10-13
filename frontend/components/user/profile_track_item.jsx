@@ -38,10 +38,16 @@ class ProfileTrackItem extends React.Component {
 
             let trackAdmin = null;
             if (author_id === currentUser) {
+            // if (currentUser) {
+                console.log('controls visible')
                 trackAdmin = 
                     <div className='profile-track-controls'>
-                        <button>edit</button>
-                        <button onClick={() => openModal('deleteTrack', id)}>delete</button>
+                        <button onClick={() => openModal('editTrack', id)}>
+                            <i className="fas fa-pencil-alt"></i>Edit
+                        </button>
+                        <button onClick={() => openModal('deleteTrack', id)}>
+                            <i className="fas fa-trash"></i>Delete
+                        </button>
                     </div>
             }
             return (

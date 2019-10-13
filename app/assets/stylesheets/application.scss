@@ -37,6 +37,14 @@ div:focus, button:focus {
   background-color: #f50;
 }
 
+.red {
+  color: red;
+}
+
+.show {
+  visibility: visible;
+}
+
 .frontHero-container {
   border-top: 4px solid #f50;
   background-image: image_url('frontHero.jpg');
