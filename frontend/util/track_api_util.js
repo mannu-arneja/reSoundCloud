@@ -22,6 +22,16 @@ export const uploadTrack = track => {
     })
 }
 
+export const updateTrack = (id, track) => {
+    return $.ajax ({
+        method: 'PATCH',
+        url: `/api/tracks/${id}`,
+        data: track,
+        contentType: false,
+        processData: false
+    })
+}
+
 export const deleteTrack = id => {
     return $.ajax ({
         method: 'DELETE',

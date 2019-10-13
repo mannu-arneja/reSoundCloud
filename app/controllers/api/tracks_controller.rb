@@ -21,6 +21,8 @@ class Api::TracksController < ApplicationController
     end
 
     def update
+        @track = Track.find_by(id: params[:id])
+        if (@track && @track.update(track_params))
     end
 
     def destroy
