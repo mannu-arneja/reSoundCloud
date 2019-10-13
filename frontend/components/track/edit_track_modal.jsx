@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { uploadTrack } from '../../actions/track_actions';
+import { updateTrack } from '../../actions/track_actions';
 import { withRouter } from 'react-router-dom';
 
-class EditForm extends React.Component {
+class UpdateTrackModal extends React.Component {
     constructor(props) {
         super(props)
+
+        let { title, desc, audioFile, imageFile, imageUrl } = this.props.track 
         this.state = {
-            title: "",
-            desc: "",
-            audioFile: null,
-            imageFile: null,
-            imageUrl: null,
+            title: title || "",
+            desc: desc || "",
+            audioFile: audioFile,
+            imageFile: imageFile || null,
+            imageUrl: imageUrl || null,
         }
         this.nextForm = React.createRef();
         this.imgPrev = React.createRef();
@@ -30,28 +32,28 @@ class EditForm extends React.Component {
         formData.append('track[title]', this.state.title);
         formData.append('track[desc]', this.state.desc);
         formData.append('track[author_id]', this.props.currentUser.id);
-        if (this.state.audioFile) {
-            formData.append('track[audio]', this.state.audioFile);
-        }
+        // if (this.state.audioFile) {
+        //     formData.append('track[audio]', this.state.audioFile);
+        // }
         if (this.state.imageFile) {
             formData.append('track[image]', this.state.imageFile);
         }
         this.props.upload(formData).then(this.props.history.push(`/user/${this.props.currentUser.id}`))
     }
 
-    handleAudioFile(e) {
-        const reader = new FileReader();
-        const file = e.currentTarget.files[0];
-        reader.onloadend = () =>
-            this.setState({ audioUrl: reader.result, audioFile: file });
+    // handleAudioFile(e) {
+    //     const reader = new FileReader();
+    //     const file = e.currentTarget.files[0];
+    //     reader.onloadend = () =>
+    //         this.setState({ audioUrl: reader.result, audioFile: file });
 
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            this.setState({ audioUrl: "", audioFile: null });
-        }
-        this.nextForm.current.classList.add('visible');
-    }
+    //     if (file) {
+    //         reader.readAsDataURL(file);
+    //     } else {
+    //         this.setState({ audioUrl: "", audioFile: null });
+    //     }
+    //     this.nextForm.current.classList.add('visible');
+    // }
 
     handleImgFile(e) {
         const reader = new FileReader();
@@ -71,17 +73,12 @@ class EditForm extends React.Component {
     render() {
         let preview = this.state.imageUrl ? <img src={this.state.imageUrl}></img> : null;
         return (
-            <div className="upload-container">
+
+            <div className='modal-child edit-form'>
+
                 <div className="up-form">
                     <form onSubmit={this.handleSubmit}>
-                        <div className="up-form-file">
-                            <div className="up-form-button1">
-                                <label>choose file to upload
-                                    <input type="file" className="hide" onChange={this.handleAudioFile}></input>
-                                </label>
-                            </div>
-                            <p>Provide FLAC, WAV, ALAC or AIFF for best audio quality.</p>
-                        </div>
+                        
                         <div className="up-form-next" ref={this.nextForm} >
                             <div className="up-form-img" ref={this.imgPrev}>
                                 {preview}
@@ -118,7 +115,8 @@ class EditForm extends React.Component {
                         </div>
                     </form>
                 </div>
-            </div>
+
+            </div >
         )
     }
 
@@ -127,14 +125,15 @@ class EditForm extends React.Component {
 
 const msp = (state) => {
     return ({
-        currentUser: state.entities.users[state.session.id]
+        currentUser: state.entities.users[state.session.id],
+        track: state.entities.tracks[state.ui.modal.modalProps]
     });
 };
 
 const mdp = dispatch => {
     return ({
-        upload: track => dispatch(uploadTrack(track))
+        update: (id, track) => dispatch(updateTrack(id, track))
     })
 }
 
-export default withRouter(connect(msp, mdp)(UploadForm))
+export default withRouter(connect(msp, mdp)(UpdateTrackModal))

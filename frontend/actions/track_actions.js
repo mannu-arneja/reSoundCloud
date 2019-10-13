@@ -69,6 +69,13 @@ export const uploadTrack = track => dispatch => {
     );
 };
 
+export const updateTrack = (id, track) => dispatch => {
+    return (
+        APIUtil.updateTrack(id, track).then(track => dispatch(receiveTrack(track)),
+        err => dispatch(receiveTrackErrors(err)))
+    )
+};
+
 export const deleteTrack = id => dispatch => {
     return (
         APIUtil.deleteTrack(id).then(id => dispatch(removeTrack(id)),
