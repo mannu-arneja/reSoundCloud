@@ -141,5 +141,14 @@
   padding: 50px 0px;
   height: 800px;
   background-color: white;
+  font: 12px/1.4 "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+}
+
+.trackpage-banner {
+    width: 100%;
+    height: 380px;
+    background-image: linear-gradient(to bottom right, #f9f9f9, #000000);
+    display: flex;
+    align-items: space-between;
 }
 
