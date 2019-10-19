@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { receiveCurrentTrack, togglePause } from '../../actions/track_actions';
+import { receiveCurrentTrack, togglePause, fetchTrack } from '../../actions/track_actions';
 import { openModal } from '../../actions/modal_actions';
 
 
@@ -9,17 +9,23 @@ class TrackPage extends React.Component {
     constructor(props) {
         super(props)
 
+        this.state = {
+            fetched: false
+        };
+
         this.playTrack = this.playTrack.bind(this);
     }
 
     componentDidMount() {
         window.scrollTo(0, 0)
+        this.props.fetchTrack(this.props.match.params.id)
+        .then(() => this.setState({fetched: true}))
     }
 
     playTrack(e) {
         e.stopPropagation();
-        if (this.props.currentTrack !== this.props.trackID) {
-            this.props.receiveCurrentTrack(this.props.trackID);
+        if (this.props.currentTrack !== this.props.match.params.id) {
+            this.props.receiveCurrentTrack(this.props.match.params.id);
             if (this.props.paused) {
                 this.props.togglePause();
             }
@@ -30,12 +36,12 @@ class TrackPage extends React.Component {
 
     render() {
 
-        if (this.props.tracks) {
+        if (this.state.fetched) {
             const { id, title, author, author_id, imageUrl } = this.props.tracks[this.props.match.params.id];
             const { paused, currentTrack, currentUser, openModal } = this.props
             let pauseStateClass = 'fas fa-play i-nudge';
             if (currentTrack) {
-                if (!paused && currentTrack === id) {
+                if (!paused) {
                     pauseStateClass = 'fas fa-pause';
                 }
             };
@@ -98,6 +104,7 @@ const msp = state => {
 const mdp = dispatch => {
 
     return ({
+        fetchTrack: (id) => dispatch(fetchTrack(id)),
         receiveCurrentTrack: (id) => dispatch(receiveCurrentTrack(id)),
         togglePause: () => dispatch(togglePause()),
         openModal: (mode, props) => dispatch(openModal(mode, props)),
