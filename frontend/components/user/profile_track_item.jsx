@@ -63,7 +63,9 @@ class ProfileTrackItem extends React.Component {
                             </div>
                             <div className='profile-track-info'>
                                 <div className='profile-track-author'>{author}</div>
-                                <div className='profile-track-title'>{title}</div>
+                                <Link to={`/track/${id}`}>
+                                    <div className='profile-track-title'>{title}</div>
+                                </Link>
                             </div>
                         </div>
                         <div className='profile-track-wave'></div>
