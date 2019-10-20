@@ -80,11 +80,13 @@ class TrackPage extends React.Component {
                         </div>
                     </div>
 
-                    <div className='trackpage-main'>
-                        <div className='comment-container'>Comments
-                            <input className='comment-input' type="text" placeholder="Write a comment"/>
+                    <div className='trackpage-main-container'>
+                        <div className='trackpage-main'>
+                            <div className='comment-container'>
+                                <input className='comment-input' type="text" placeholder="Write a comment"/>
+                            </div>
+                            {trackAdmin}
                         </div>
-                        {trackAdmin}
                     </div>
 
                 </div>
