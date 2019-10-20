@@ -39,7 +39,6 @@ class ProfileTrackItem extends React.Component {
             let trackAdmin = null;
             if (author_id === currentUser) {
             // if (currentUser) {
-                console.log('controls visible')
                 trackAdmin = 
                     <div className='profile-track-controls'>
                         <button onClick={() => openModal('editTrack', id)}>

@@ -72,16 +72,21 @@ class TrackPage extends React.Component {
                                 <Link to={`/user/${author_id}`}>
                                     <div className='trackpage-author'>{author}</div>
                                 </Link>
+                                <div className='trackpage-title'>{title}</div>
                             </div>
                         </div>
                         <div className='trackpage-img'>
-
+                            <img src={imageUrl}/>
                         </div>
                     </div>
 
+                    <div className='trackpage-main'>
+                        <div className='comment-container'>Comments
+                            <input className='comment-input' type="text" placeholder="Write a comment"/>
+                        </div>
+                        {trackAdmin}
+                    </div>
 
-                    --track page--
-                    # {this.props.match.params.id} !
                 </div>
             )
 
