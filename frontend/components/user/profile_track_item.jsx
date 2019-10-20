@@ -40,7 +40,7 @@ class ProfileTrackItem extends React.Component {
             if (author_id === currentUser) {
             // if (currentUser) {
                 trackAdmin = 
-                    <div className='profile-track-controls'>
+                    <div className='profile-track-controls light-font'>
                         <button onClick={() => openModal('editTrack', id)}>
                             <i className="fas fa-pencil-alt"></i>Edit
                         </button>
