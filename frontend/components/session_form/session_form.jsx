@@ -7,8 +7,10 @@ class SessionForm extends React.Component {
             email: '',
             password: '',
             username: '',
+            photoFile: null,
         };
         
+        this.handleFile = this.handleFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemo = this.handleDemo.bind(this);
         this.showErrors = this.showErrors.bind(this);
@@ -20,9 +22,19 @@ class SessionForm extends React.Component {
         return e => this.setState({[field]: e.target.value})
     };
 
+    handleFile(e) {
+        this.setState({photoFile: e.currentTarget.files[0]});
+    }
+
     handleSubmit(e) {
         e.preventDefault();
-        const user = Object.assign({}, this.state);
+        const { email, password, username, photoFile } = this.state
+        const formData = new FormData();
+        formData.append('user[email]', email);
+        formData.append('user[password]', password);
+        formData.append('user[username]', username);
+        formData.append('user[photo]', photoFile);
+        // const user = Object.assign({}, this.state);
         this.props.processForm(user).then(() => this.props.closeModal())
     };
 
@@ -61,16 +73,20 @@ class SessionForm extends React.Component {
 
 
     render() {
-
-        let inputUsername = null;
+        let inputNewUser = null;
         if (this.props.formType === 'signup') {
-            inputUsername = 
+            inputNewUser = 
+            <>
+                <input type="file" 
+                    onChange={this.handleFile}
+                />
                 <input type="text"
                     value={this.state.username}
                     onChange={this.handleUpdate('username')}
                     className="login-field"
                     placeholder="Your display name *"
                 />
+            </>
         }
 
         let showErrors = null;
@@ -94,7 +110,7 @@ class SessionForm extends React.Component {
 
                     <form onSubmit={this.handleSubmit} className="signup-form" >
                         <label>
-                            {inputUsername}
+                            {inputNewUser}
                         </label>
                         <label>
                             <input type="text"
