@@ -8,6 +8,7 @@ class SessionForm extends React.Component {
             password: '',
             username: '',
             photoFile: null,
+            photoUrl: null,
         };
         
         this.handleFile = this.handleFile.bind(this);
@@ -23,7 +24,16 @@ class SessionForm extends React.Component {
     };
 
     handleFile(e) {
-        this.setState({photoFile: e.currentTarget.files[0]});
+        const reader = new FileReader();
+        const file = e.currentTarget.files[0];
+        reader.onloadend = () => 
+            this.setState({ photoUrl: reader.result, photoFile: file});
+        
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+
+        // this.setState({photoFile: e.currentTarget.files[0]});
     }
 
     handleSubmit(e) {
