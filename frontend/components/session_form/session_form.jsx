@@ -83,19 +83,33 @@ class SessionForm extends React.Component {
 
 
     render() {
+        let preview = this.state.photoUrl ? <img src={this.state.photoUrl}></img> : null;
+
+        // if (this.state.photoUrl) {
+        //     preview = 
+        //         <div className='signup-img'>
+        //         </div>
+        // }
         let inputNewUser = null;
         if (this.props.formType === 'signup') {
             inputNewUser = 
             <>
-                <input type="file" 
-                    onChange={this.handleFile}
-                />
+            <div className='signup-img'>
+                {preview}
+            </div>
+            <label className="signup-img-btn">
+                <i className="fas fa-camera"></i>
+                Upload Profile Picture
+                <input type="file" className='hide' onChange={this.handleFile} />
+            </label>
+            <label>
                 <input type="text"
                     value={this.state.username}
                     onChange={this.handleUpdate('username')}
                     className="login-field"
                     placeholder="Your display name *"
                 />
+            </label>
             </>
         }
 
@@ -119,9 +133,9 @@ class SessionForm extends React.Component {
                     <h1 className="form-divide">or</h1>
 
                     <form onSubmit={this.handleSubmit} className="signup-form" >
-                        <label>
+
                             {inputNewUser}
-                        </label>
+
                         <label>
                             <input type="text"
                                 value={this.state.email}
