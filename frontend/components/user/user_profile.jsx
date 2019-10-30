@@ -33,13 +33,17 @@ class UserProfile extends React.Component {
     render() {
         let user;
         let profile;
+        let photo;
 
         if (this.state.fetched) {
             user = this.props.users[this.props.match.params.id]
-
+            photo = user.photoUrl ? <img src={user.photoUrl}/> : <div className='default-photo'></div>;
             profile = 
                 <>
                     <div className="profile-banner">
+                        <div className='profile-photo'>
+                            {photo}
+                        </div>
                         <h3 className="profile-name">{user.username}</h3>
                     </div>
                     <div className="profile-tabs">

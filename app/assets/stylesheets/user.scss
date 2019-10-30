@@ -14,6 +14,21 @@
     align-items: flex-start;
 }
 
+.profile-photo {
+    height: 250px;
+    width: 250px;
+    text-align: center;
+}
+
+.profile-photo img, .default-photo {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-image: linear-gradient(135deg, #846170, #70929c);
+    margin: 25px auto;
+    object-fit: cover;
+}
+
 .profile-name {
     color: #fff;
     font-weight: 100;

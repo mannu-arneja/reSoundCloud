@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function PreNav({openModal, currentUser}){
-
-    console.log(currentUser);
     
 
     return (

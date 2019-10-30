@@ -45,7 +45,7 @@ class SessionForm extends React.Component {
         formData.append('user[username]', username);
         formData.append('user[photo]', photoFile);
         // const user = Object.assign({}, this.state);
-        this.props.processForm(user).then(() => this.props.closeModal())
+        this.props.processForm(formData).then(() => this.props.closeModal())
     };
 
     handleDemo() {
@@ -84,22 +84,27 @@ class SessionForm extends React.Component {
 
     render() {
         let preview = this.state.photoUrl ? <img src={this.state.photoUrl}></img> : null;
+        // let preview = null;
 
         // if (this.state.photoUrl) {
         //     preview = 
-        //         <div className='signup-img'>
+        //         <div>
+        //             <img src={this.state.photoUrl} />
+        //             <input type="file" className="hide" onChange={this.handleFile} />
         //         </div>
         // }
+
         let inputNewUser = null;
         if (this.props.formType === 'signup') {
             inputNewUser = 
             <>
-            <div className='signup-img'>
+            <label className='signup-img'>
                 {preview}
-            </div>
+                <input type="file" className="hide" onChange={this.handleFile} />
+            </label>
             <label className="signup-img-btn">
                 <i className="fas fa-camera"></i>
-                Upload Profile Picture
+                {this.state.photoUrl ? "Change" : "Upload"} Profile Picture
                 <input type="file" className='hide' onChange={this.handleFile} />
             </label>
             <label>
@@ -130,7 +135,7 @@ class SessionForm extends React.Component {
                     <button className="demo-button" onClick={() => this.handleDemo()}>
                         Login as Guest
                 </button>
-                    <h1 className="form-divide">or</h1>
+                    <h1 className="form-divide"><span>or</span></h1>
 
                     <form onSubmit={this.handleSubmit} className="signup-form" >
 
