@@ -14,7 +14,9 @@ export const login = (user) => {
     return $.ajax({
         method: 'POST',
         url: 'api/session',
-        data: {user}
+        data: user,
+        contentType: false,
+        processData: false
     });
 };
 
