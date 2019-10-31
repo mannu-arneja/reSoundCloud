@@ -13,9 +13,14 @@ class NavBar extends React.Component {
         let { currentUser, logout, openModal } = this.props;
         let greet;
         if (currentUser) {
+            let photo = currentUser.photoUrl ? <img src={this.props.currentUser.photoUrl} /> : null;
+
             greet = 
             <>
-                <button className='nav-button' onClick={() => this.props.history.push(`/user/${this.props.currentUser.id}`)}>{currentUser.username}</button>
+                <button className='nav-button flex' onClick={() => this.props.history.push(`/user/${this.props.currentUser.id}`)}>
+                    <div className='nav-prof'>{photo}</div>
+                    {currentUser.username}
+                </button>
                 <button className="nav-button" onClick={() => { logout(); this.props.history.push("/"); }}>Log Out</button>
             </>
         } else {

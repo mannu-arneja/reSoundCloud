@@ -45,6 +45,10 @@ div:focus, button:focus {
   visibility: visible;
 }
 
+.flex {
+  display: flex;
+}
+
 .frontHero-container {
   border-top: 4px solid #f50;
   background-image: image_url('frontHero.jpg');

@@ -126,11 +126,13 @@ nav.signin {
 .nav-button {
   background: transparent;
   color: rgba(240, 240, 240, 0.9);
-  padding: 15px 15px;
+  padding: 0px 20px;
   font-size: 15px;
   border: none;
   border-right: 1px solid black;
   min-width: 104px;
+  height: 50px;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -138,6 +140,22 @@ nav.signin {
   color: white;
   // background: black;
 }
+
+.nav-prof, .nav-prof img {
+  width: 42px;
+  height: 42px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-image: linear-gradient(135deg,#846170,#70929c);
+  object-fit: cover;
+}
+
+// .nav-prof img {
+//   width: inherit;
+//   height: inherit;
+//   object-fit: cover;
+//   border-radius: inherit;
+// }
 
 
 .signup-button {
