@@ -1,0 +1,70 @@
+.main-container {
+  display: flex;
+  background-color: white;
+  padding: 50px 0px;
+}
+
+.main-container h2{
+  padding: 30px 0px 0px 45px;
+  font-size: 23px;
+}
+
+.main-body {
+  width: 900px;
+  height: 900px;
+  border-right: 1px solid lightgrey;
+}
+
+.main-side {
+  width: 300px;
+  padding: 30px 20px;
+}
+
+.side-profiles {
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgrey;
+  font-size: 14px;
+  color: #999;
+}
+
+.side-profiles i {
+  padding-right: 10px;
+}
+
+.sideprof-container {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sideprof-left {
+    display: flex;
+    align-items: center;
+}
+
+.sideprof-img, .sideprof-img img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sideprof-container h3 {
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.sideprof-btn {
+    font-size: 11px;
+    margin-top: 25px;
+    color: #333;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+.sideprof-btn:hover {
+    border-color: #9c9c9c
+}
